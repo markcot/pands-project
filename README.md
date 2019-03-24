@@ -25,6 +25,7 @@ four attributes relating to the variation within each class and a fifth attribut
 the class variant name, namely:
 
 Five attributes in Fisher's Iris data set [1]
+
     1) Sepal length in cm
     2) Sepal width in cm 
     3) Petal length in cm
@@ -32,6 +33,7 @@ Five attributes in Fisher's Iris data set [1]
     5) Class variant name
 
 Three Iris flower class variant names in Fisher's Iris data set [1]
+
     A) Iris Setosa
     B) Iris Versicolour
     C) Iris Virginica
@@ -51,6 +53,7 @@ apparatus.
 There are known errors [1] in the 35th and 38th samples. Sample 35 has an error in
 the fourth attribute and sample 38 has an error in the second and third attribute.
 The corrected data set instances should be:
+
     Sample 35) 4.9,3.1,1.5,0.2,"Iris-setosa"
     Sample 38) 4.9,3.6,1.4,0.1,"Iris-setosa"
 
