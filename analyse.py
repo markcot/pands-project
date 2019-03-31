@@ -3,7 +3,11 @@
 # pands project - analyse.py
 # Mark Cotter, V1_01, 2019-03-31
 
-# V1_01 - Program created 2019-03-31
+# V1_02 - 2019-03-31 (b)
+# Column header row added to the data import
+# Comment updated
+
+# V1_01 - Program created 2019-03-31 (a)
 # Import modules, import csv file and review groups
 
 # A program to read an input from a csv file of the 'Fisher’s Iris data set'
@@ -40,9 +44,12 @@ else:
     # command line. after >>python analyse.py ... 
     # 
     # Code adapted from Mark Cotter pands problem set Exercise 9 - second.py
-    # and from website
+    # and from websites
     # http://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html
-    df = pd.read_csv(f'{sys.argv[1]}')
+    # https://stackoverflow.com/questions/34091877/how-to-add-header-row-to-a-pandas-dataframe
+    df = pd.read_csv(f'{sys.argv[1]}', header=None)
+    df.columns = ["Sepal-length", "Sepal-width",
+        "Petal-length" , "Petal-width", "Name"]
 
     # Test print of start of the csv content
     #print(pd.head())
@@ -74,6 +81,8 @@ else:
     #print(groupthree)
 
     # Print summaries of Group 1, 2 & 3
+    # Code adapted from website
+    # http://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#groupby
     print("\nGroup 'Iris-setosa' summary is as follows.")
     print(groupone.describe())
     print("\nGroup 'Iris-versicolor' summary is as follows.")
@@ -85,15 +94,19 @@ else:
 
 
 # Code reference sources:
-# 1. Dr Ian McLoughlin, GMIT: H Dip in Data Analytics lecture notes,
-#    Code adapted from the Week 9 lecture for plotting using matplotlib and numpy
-#    modules and command line arguments in python.
+# [A] Dr Ian McLoughlin, GMIT: H Dip in Data Analytics lecture notes,
+#     Code adapted from the Week 9 lecture for plotting using matplotlib and numpy
+#     modules and command line arguments in python.
 #
-# 2. Code adapted for using pandas from website
-#    http://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html
+# [B] Code adapted for using pandas from website
+#     http://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html
 #
-# 3. Code adapted from Mark Cotter pands problem set Exercise 9 - second.py
-#    and Week 9 lecture for checking for correct input arguments.
+# [C] Code adapted from Mark Cotter pands problem set Exercise 9 - second.py
+#     and Week 9 lecture for checking for correct input arguments.
 # 
-# 4. Code adapted for grouping data using pandas from website
-#    http://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#groupby
+# [D] Code for editing header row to a pandas dataframe adapted from website
+#     https://stackoverflow.com/questions/34091877/how-to-add-header-row-to-a-pandas-dataframe
+#
+# [E] Code adapted for grouping data, getting groups and decribing groups using
+#     pandas from website
+#     http://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#groupby

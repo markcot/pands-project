@@ -17,8 +17,8 @@ The data set [1] was introduced in a paper by botanist Ronald A. Fisher in 1936,
 was originally collected in 1935 and published in 1936 by botanist Edgar S. Anderson
 [3]. The data set is also referred to as 'Anderson's Iris data set'.
 
-The data relates to the classification of 3 variant classes of Iris flower based on
-their characteristics with fifty instances of each class. Data was presented giving
+The data relates to the classification of three variant classes of Iris flower based
+on their characteristics with fifty instances of each class. Data was presented giving
 four attributes relating to the variation within each class and a fifth attribute for
 the class variant name, namely:
 
@@ -55,9 +55,9 @@ The corrected data set instances should be:
     Sample 35) 4.9,3.1,1.5,0.2,"Iris-setosa"
     Sample 38) 4.9,3.6,1.4,0.1,"Iris-setosa"
 
-Fisher's Iris data set can be downloaded online [7] as the file labeled 'iris.data',
-which can be saved as a .csv file. The data set file has been included in this
-project folder for reference saved as 'iris-data-set.csv'.
+Fisher's Iris data set can be downloaded online [7] listed as the file labeled
+'iris.data', which can be saved as a .csv extension file. The data set file has been
+included in this git project folder for reference saved as 'iris-data-set.csv'.
 
 Online observations [8] highlight the data in Fisher's Iris data set [1] is of good
 quality and is based on real life data. The quantity of data is large enough to be
@@ -72,29 +72,34 @@ I created a python program called 'analyse.py' version V1_01 to import and anyly
 the Fisher's Iris data set. I added the script for the program to the folder linked
 to the git repository for this project.
 
-As I might need them, I decided to get started by importing the python modules numpy,
-pandas, matplotlib.pyplot and sys. I abbreviated the longer modules to np, pd and pl
-for ease later use in the code.
+I decided to get started by importing the python modules numpy, pandas,
+matplotlib.pyplot and sys. I abbreviated the longer modules to np, pd and pl
+for ease later use in the code [A] & [B].
 
-I used the sys argument to identify that a second additional argument after the program name was required for the csv filename. I read on pandas website
-http://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html
+I used the sys argument to identify that a second additional argument after the program name was required for the csv filename [C]. I read on pandas website [B]
 about read csv files into python and decided to try it using the pd.read_csv command.
 
 I noticed that the test print of the data only gave 149 rows and that the first row
-of the data was used for the data title so I decided to add title row in the csv file.
-I added the following title row before the first row in the dataset for the following
-data
+of the data was used for the data header so I decided to add header row to the data
+from the csv file.
 
-    - Sepal-length,Sepal-width,Petal-length,Petal-width,Variant-name
+I found that this can be resolved using the 'header=None' command and add the following columns using the df.column function. I added this function in V1_02
+I adapted code from a website [D] to achieve this result.
 
-This gave me a dataframe with 150 rows 5 columns and with column row titles
+    - Sepal-length, Sepal-width, Petal-length, Petal-width, Name
+
+This gave me a dataframe with 150 rows 5 columns and with a column header row
+
+I adapted code for pd.groupby(), grouped.get_group() and pd.describe() modules
+from a website [E].
 
 To investigate what content was included in the data I used the pd.groupby() function
-to group the data by the variant Name and undertook a few test prints of
-the results. I found that there were three groups 'Iris-setosa', 'Iris-versicolor' and 'Iris-virginica'.
+to group the data by the variant Name.
+I undertook a few test prints of the results. I noted that there were three groups 'Iris-setosa', 'Iris-versicolor' and 'Iris-virginica' included in the dataset.
 
 I split the data into 3 groups using the grouped.get_group() command.
-I used the pd.describe() module to get a description of the data including
+I used the pd.describe() module to get a description of the data including the
+following:
 
     1) count
     2) mean
@@ -105,20 +110,6 @@ I used the pd.describe() module to get a description of the data including
     7) 75% - value
     8) max - maximum value
 
-## Code reference sources:
-1. Dr Ian McLoughlin, GMIT: H Dip in Data Analytics lecture notes,
-   Code adapted from the Week 9 lecture for plotting using matplotlib and numpy
-   modules and command line arguments in python.
-
-2. Code adapted for using pandas from website
-   http://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html
-
-3. Code adapted from Mark Cotter pands problem set Exercise 9 - second.py
-   and Week 9 lecture for checking for correct input arguments.
- 
-4. Code adapted for grouping data using pandas from website
-   http://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#groupby
-
 ## Summary of the data investigations
 
 ### Initial data review
@@ -128,9 +119,10 @@ After reading the iris dataset csv file into the python program for this project
 dataset 'Iris-setosa', 'Iris-versicolor' and 'Iris-virginica'.
 
 Spliting the data into three groups based on these names allowed a description summary of each group be generated. Over the fifty values in each group, when the minimum, maximum and mean values for petal length and petal width are compared, the
-values for 'Iris-setosa' were much lower than for the 'Iris-versicolor' and 'Iris-virginica'.
+values for 'Iris-setosa' were much lower than the values for the 'Iris-versicolor'
+and 'Iris-virginica'.
 
-This variation confirmed previous research [1] noting that the data for Iris Setosa)
+This variation confirmed previous research [1] noting that the data for Iris Setosa
 is easily separable from the other two linearly, but there is some overlap between
 the other two classes making it difficult to distinguish from each other.
 
@@ -140,7 +132,7 @@ the other two classes making it difficult to distinguish from each other.
 
 
 
-## References
+## Research References
 
 [1] UC Irvine Machine Learning Repository. Iris data set
     http://archive.ics.uci.edu/ml/datasets/Iris.
@@ -165,3 +157,22 @@ the other two classes making it difficult to distinguish from each other.
 
 [8] Aspects that make the Iris data set a good teaching example
     https://stats.stackexchange.com/questions/74776/what-aspects-of-the-iris-data-set-make-it-so-successful-as-an-example-teaching
+
+## Code reference sources:
+[A] Dr Ian McLoughlin, GMIT: H Dip in Data Analytics lecture notes,
+    Code adapted from the Week 9 lecture for plotting using matplotlib and numpy
+    modules and command line arguments in python.
+
+[B] Code adapted for using pandas from website
+    http://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html
+
+[C] Code adapted from Mark Cotter pands problem set Exercise 9 - second.py
+    and Week 9 lecture for checking for correct input arguments.
+
+[D] Code for editing header row to a pandas dataframe adapted from website
+    https://stackoverflow.com/questions/34091877/how-to-add-header-row-to-a-pandas-dataframe
+
+[E] Code adapted for grouping data, getting groups and decribing groups using
+    pandas from website
+    http://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#groupby
+
