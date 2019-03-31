@@ -1,9 +1,7 @@
 # pands-project
-GMIT project for Programming and Scripting Module 2019
+## GMIT project for Programming and Scripting Module 2019
 #### Created by: Mark Cotter, Email: g00376335@gmit.ie
-### LAST UPDATED 2019-03-24
-
-#####################################################################################
+### LAST UPDATED 2019-03-31
 
 ## Introduction
 This project concerns the well-known 'Fisher’s Iris data set' [1].
@@ -26,17 +24,17 @@ the class variant name, namely:
 
 Five attributes in Fisher's Iris data set [1]
 
-    1) Sepal length in cm
-    2) Sepal width in cm 
-    3) Petal length in cm
-    4) Petal width in cm
-    5) Class variant name
+    A) Sepal length in cm
+    B) Sepal width in cm 
+    B) Petal length in cm
+    D) Petal width in cm
+    E) Class variant name
 
 Three Iris flower class variant names in Fisher's Iris data set [1]
 
-    A) Iris Setosa
-    B) Iris Versicolour
-    C) Iris Virginica
+    1) Iris Setosa
+    2) Iris Versicolour
+    3) Iris Virginica
 
 Sepals are outermost oragns of a flower that form a protective casing for the
 developing flower bud inside and support the flower. They are usually green and leaf
@@ -66,26 +64,81 @@ quality and is based on real life data. The quantity of data is large enough to 
 of use, but small enough to be portable and easily experimented with. It is also
 numerical. All of which makes it an ideal data set for teaching purposes.
 
-#####################################################################################
 
 ## Investigatory python code
 
+### 2019-03-31 Initial program code
+I created a python program called 'analyse.py' version V1_01 to import and anylyse
+the Fisher's Iris data set. I added the script for the program to the folder linked
+to the git repository for this project.
 
+As I might need them, I decided to get started by importing the python modules numpy,
+pandas, matplotlib.pyplot and sys. I abbreviated the longer modules to np, pd and pl
+for ease later use in the code.
 
-#####################################################################################
+I used the sys argument to identify that a second additional argument after the program name was required for the csv filename. I read on pandas website
+http://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html
+about read csv files into python and decided to try it using the pd.read_csv command.
+
+I noticed that the test print of the data only gave 149 rows and that the first row
+of the data was used for the data title so I decided to add title row in the csv file.
+I added the following title row before the first row in the dataset for the following
+data
+
+    - Sepal-length,Sepal-width,Petal-length,Petal-width,Variant-name
+
+This gave me a dataframe with 150 rows 5 columns and with column row titles
+
+To investigate what content was included in the data I used the pd.groupby() function
+to group the data by the variant Name and undertook a few test prints of
+the results. I found that there were three groups 'Iris-setosa', 'Iris-versicolor' and 'Iris-virginica'.
+
+I split the data into 3 groups using the grouped.get_group() command.
+I used the pd.describe() module to get a description of the data including
+
+    1) count
+    2) mean
+    3) std - Standard Deviation
+    4) min - minimum value
+    5) 25% - value
+    6) 50% - value
+    7) 75% - value
+    8) max - maximum value
+
+## Code reference sources:
+1. Dr Ian McLoughlin, GMIT: H Dip in Data Analytics lecture notes,
+   Code adapted from the Week 9 lecture for plotting using matplotlib and numpy
+   modules and command line arguments in python.
+
+2. Code adapted for using pandas from website
+   http://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html
+
+3. Code adapted from Mark Cotter pands problem set Exercise 9 - second.py
+   and Week 9 lecture for checking for correct input arguments.
+ 
+4. Code adapted for grouping data using pandas from website
+   http://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#groupby
 
 ## Summary of the data investigations
 
+### Initial data review
 
+After reading the iris dataset csv file into the python program for this project
+'analyse.py', I observed that there were three variant names included within the
+dataset 'Iris-setosa', 'Iris-versicolor' and 'Iris-virginica'.
 
-#####################################################################################
+Spliting the data into three groups based on these names allowed a description summary of each group be generated. Over the fifty values in each group, when the minimum, maximum and mean values for petal length and petal width are compared, the
+values for 'Iris-setosa' were much lower than for the 'Iris-versicolor' and 'Iris-virginica'.
+
+This variation confirmed previous research [1] noting that the data for Iris Setosa)
+is easily separable from the other two linearly, but there is some overlap between
+the other two classes making it difficult to distinguish from each other.
+
 
 ## Supporting tables and graphics
 
 
 
-
-#####################################################################################
 
 ## References
 
@@ -112,5 +165,3 @@ numerical. All of which makes it an ideal data set for teaching purposes.
 
 [8] Aspects that make the Iris data set a good teaching example
     https://stats.stackexchange.com/questions/74776/what-aspects-of-the-iris-data-set-make-it-so-successful-as-an-example-teaching
-
-#####################################################################################
