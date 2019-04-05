@@ -24,7 +24,7 @@
 # http://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html
 import numpy as np
 import pandas as pd
-#import matplotlib.pyplot as pl
+import matplotlib.pyplot as pl
 # Opens the python sys module
 # Code adpted from Week 9 lecture of command line arguments in python
 import sys
@@ -46,10 +46,11 @@ else:
     # Code adapted from Mark Cotter pands problem set Exercise 9 - second.py
     # and from websites
     # http://pandas.pydata.org/pandas-docs/stable/getting_started/10min.html
-    # https://stackoverflow.com/questions/34091877/how-to-add-header-row-to-a-pandas-dataframe
     df = pd.read_csv(f'{sys.argv[1]}', header=None)
-    df.columns = ["Sepal-length", "Sepal-width",
-        "Petal-length" , "Petal-width", "Name"]
+    # Add header row Code adpated from
+    # https://stackoverflow.com/questions/34091877/how-to-add-header-row-to-a-pandas-dataframe
+    df.columns = ['Sepal-length', 'Sepal-width',
+        'Petal-length' , 'Petal-width', 'Name']
 
     # Test print of start of the csv content
     #print(pd.head())
@@ -65,8 +66,7 @@ else:
     print("\nThe following is the first entry for each group in the data set.")
     print(grouped.first())
 
-    # Split the data into groups
-    # Code adapted from website
+    # Split the data into groups. Code adapted from website
     # http://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#groupby
     groupone = grouped.get_group('Iris-setosa')
     grouptwo = grouped.get_group('Iris-versicolor')
@@ -80,15 +80,50 @@ else:
     #print("\nGroup 'Iris-virginica' is the following.")
     #print(groupthree)
 
-    # Print summaries of Group 1, 2 & 3
+    # Test Print summaries of Group 1, 2 & 3
     # Code adapted from website
     # http://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#groupby
-    print("\nGroup 'Iris-setosa' summary is as follows.")
-    print(groupone.describe())
-    print("\nGroup 'Iris-versicolor' summary is as follows.")
-    print(grouptwo.describe())
-    print("\nGroup 'Iris-virginica' summary is as follows.")
-    print(groupthree.describe())    
+    #print("\nGroup 'Iris-setosa' summary is as follows.")
+    #print(groupone.describe())
+    #print("\nGroup 'Iris-versicolor' summary is as follows.")
+    #print(grouptwo.describe())
+    #print("\nGroup 'Iris-virginica' summary is as follows.")
+    #print(groupthree.describe())    
+
+    # Output decriptions to csv file. Code adapted from
+    # https://www.datacamp.com/community/blog/python-pandas-cheat-sheet
+    groupone.describe().to_csv('Iris-setosa_summary.csv')
+    grouptwo.describe().to_csv('Iris-versicolor_summary.csv')
+    groupthree.describe().to_csv('Iris-virginica_summary.csv')
+
+# End of Initial inport loop
+
+# Import descriptions as new dataframes
+setosa_des = pd.read_csv('Iris-setosa_summary.csv')
+versicolor_des = pd.read_csv('Iris-versicolor_summary.csv')
+virginica_des = pd.read_csv('Iris-virginica_summary.csv')
+
+# Add names to the first entry of the csv summary files Code adapted from
+# https://www.datacamp.com/community/blog/python-pandas-cheat-sheet
+setosa_des.columns = ['Iris-setosa', 'Sepal-length', 'Sepal-width',
+                        'Petal-length' , 'Petal-width']
+versicolor_des.columns = ['Iris-versicolor', 'Sepal-length', 'Sepal-width',
+                        'Petal-length' , 'Petal-width']
+virginica_des.columns = ['Iris-virginica', 'Sepal-length', 'Sepal-width',
+                        'Petal-length' , 'Petal-width']
+
+# Print summaries of 3 Groups
+print("\nSummary of three groups is as follows.")
+print(setosa_des)
+print('\n', versicolor_des)
+print('\n', virginica_des)  
+
+# Update the csv files with the correct headers
+# Code for removing index column from export adapted from
+# https://stackoverflow.com/a/25230582
+setosa_des.to_csv('Iris-setosa_summary.csv', index = False)
+versicolor_des.to_csv('Iris-versicolor_summary.csv', index = False)
+virginica_des.to_csv('Iris-virginica_summary.csv', index = False)
 
 # End of program
 
@@ -110,3 +145,10 @@ else:
 # [E] Code adapted for grouping data, getting groups and decribing groups using
 #     pandas from website
 #     http://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#groupby
+#
+# [F] Code for Pandas output to csv file adapted from website
+#     https://www.datacamp.com/community/blog/python-pandas-cheat-sheet
+#
+# [G] Code for removing index column from export adapted from 
+#     https://stackoverflow.com/a/25230582
+

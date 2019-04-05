@@ -126,6 +126,14 @@ This variation confirmed previous research [1] noting that the data for Iris Set
 is easily separable from the other two linearly, but there is some overlap between
 the other two classes making it difficult to distinguish from each other.
 
+### Summary of Initial data review
+
+I decided to try and get make a table of the description data from the initial review
+I adapted code from a website [F] to output dataframes to a csv file and exported the
+summaries to csv files. I reimported the csv files as new dataframes and added a new
+header row using code adapted from a website [G] and updated the csv files with the
+revised header rows. I now had clean csv file information that can be used for
+producing tables.
 
 ## Supporting tables and graphics
 
@@ -176,3 +184,8 @@ the other two classes making it difficult to distinguish from each other.
     pandas from website
     http://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#groupby
 
+[F] Code for Pandas output to csv file adapted from website
+    https://www.datacamp.com/community/blog/python-pandas-cheat-sheet
+
+[G] Code for removing index column from export adapted from 
+    https://stackoverflow.com/a/25230582
