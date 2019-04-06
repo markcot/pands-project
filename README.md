@@ -12,7 +12,6 @@ The data set has been widely investigated and written about it, much of which ha
 published online in the field of pattern recognition and machine learning.
 
 ## Research
-
 The data set [1] was introduced in a paper by botanist Ronald A. Fisher in 1936, but
 was originally collected in 1935 and published in 1936 by botanist Edgar S. Anderson
 [3]. The data set is also referred to as 'Anderson's Iris data set'.
@@ -36,14 +35,14 @@ Three Iris flower class variant names in Fisher's Iris data set [1]
     2) Iris Versicolour
     3) Iris Virginica
 
-Sepals are outermost oragns of a flower that form a protective casing for the
+Sepals are outermost organs of a flower that form a protective casing for the
 developing flower bud inside and support the flower. They are usually green and leaf
 like [4]. Petals are the organ of a flower that are often noticeably coloured to
 attract pollinators [5].
 
 Previous research [1] has shown that one class in the data set (Iris Setosa) is
 easily separable from the other two linearly. There is some overlap between the other
-two classes making it difficult to distinguish from each other. A previous report [6]
+two classes making it difficult to distinguish from each other. A previous study [6]
 on the data set noted that two of species were all collected on the same day from the
 same pasture in Gaspe Peninsula and measured by the same person with the same
 apparatus.
@@ -70,13 +69,13 @@ and histograms of the comparing each of the four column variables.
 ## Investigatory python code
 
 ### Initial program code
-I created a python program called 'analyse.py' version V1_01 to import and anylyse
+I created a python program called 'analyse.py' version V1_01 to import and analyse
 the Fisher's Iris data set. I added the script for the program to the folder linked
 to the git repository for this project.
 
 I decided to get started by importing the python modules numpy, pandas,
 matplotlib.pyplot and sys. I abbreviated the longer modules to np, pd and pl
-for ease later use in the code [A] & [B].
+for ease of use in the code [A] & [B].
 
 I used the sys argument to identify that a second additional argument after the program name was required for the csv filename [C]. I read on pandas website [B]
 about read csv files into python and decided to try it using the pd.read_csv command.
@@ -89,7 +88,7 @@ from the csv file.
 I found that this can be resolved using the 'header=None' command and add the following columns using the df.column function. I added this function in V1_02
 I adapted code from a website [D] to achieve this result.
 
-    - 'Sepal Length', 'Sepal Width', 'Petal Length', 'Petal Width', 'Name'
+    - Sepal Length, Sepal Width, Petal Length, Petal Width, Name
 
 This gave me a dataframe with 150 rows 5 columns and with a column header row
 
@@ -145,15 +144,56 @@ To compare the data in more detail I created some options to create plots of the
 I wrote code to display plots of the data to compare 'Sepal Length vs. Sepal Width'
 and 'Petal Length vs. Petal Width'. In V1_05, I used code adapted from websites ([E],
 [J], [K] & [M]) to plot scatter plot for the three groups using 3 different colours.
-Refer to Figure 1 and Figure 2 below. In V1_06, I edited the size of the graphs
+Refer to Figure 1 and Figure 2 below.
 
+In V1_06, I edited the size of the graphs. In V1_07 I add a function
+plot_df_sca_comp() to shorten the program and reuse the ploting code and added
+Figure 3 and Figure 4 below.
+
+### Detailed Data Analysis
+
+#### Sepal Length versus Sepal Width
+Comparing 'Sepal Length' to 'Sepal Width' as shown in Figure 1, 'Iris-setosa' is
+easily distinguishable from the other two. 'Iris-virginica' and 'Iris-versicolor' have
+significant overlap making this a poor comparison method for the three iris variants.
+
+####  Petal Length versus Petal Width
+When the 'Petal Length' is compared with the 'Petal Width' in Figure 2, there is a
+notable separation between all three variants. 'Iris-setosa' is at the bottom left of the plot, 'Iris-virginica' is at the top right of the plot and 'Iris-versicolor' is
+in the centre of the plot. There is some minor overlap between the 'Iris-virginica'
+data and the 'Iris-versicolor' data. However 'Petal Length' related to 'Petal Width'
+appears to be a good differentiating method for these three iris variants.
+
+#### Sepal Length versus Petal Length
+Figure 3 indicates the comparison of 'Sepal Length' and 'Petal Length' and has similar
+properties to Figure 2. 'Iris-setosa' is well defined as a separate entity. 
+'Iris-virginica' and 'Iris-versicolor' are separated, but with more overlap than 
+shown in Figure 2.
+This comparison method is average, but not as accurate as 'Petal Length' versus
+'Petal Width' shown in Figure 2.
+
+#### Sepal Width versus Petal Width
+A comparison of 'Sepal Width' to 'Petal Width' shown in Figure 4 provides 
+similar results as seen in Figure 2. 'Iris-setosa' is well defined as a separate
+entity. 'Iris-virginica' and 'Iris-versicolor' are separated, but have a very
+similar overlap to the overlap shown in Figure 2.
+This comparison method is just as accurate as the 'Petal Length' versus 'Petal Width'
+comparison method.
 
 ### Summary of Detailed Data Analysis
+The two most accurate comparison methods for these three iris variant ('setosa',
+'virginica' and 'versicolor' are the comparison of 'Petal Length' related to 'Petal Width' and comparison of 'Sepal Width' to 'Petal Width' as shown in Figure 2 and
+Figure 4 respectively.
 
-When the 'Petal Length' is compared with the 'Petal Width', there is a notable
-separation between all three variants with the 'Iris-virginica' to the top right of
-the plot, 'Iris-setosa' at the bottom left of the plot and 'Iris-versicolor' in the
-centre of the plot.
+'Iris-setosa' is easily separable linearly from the other two with the other two
+having some overlap. This overlap between 'Iris-virginica' and 'Iris-versicolor'
+leads to the conclusion that all of samples for these two variants were picked from
+the same pasture on the same day as identified in the previous study [6] and that
+the overlap is due to the similar growing conditions.
+
+The known errors in the data set for sample 35 and 38 for the 'Iris-setosa' variant
+do not appear to have affected the results of the analysis. As such, these values
+were not corrected during the analysis.
 
 ## Supporting Tables and Graphics
 
@@ -194,6 +234,9 @@ Refer to layout from website reference [ii]
 
 ![Figure 2](https://github.com/markcot/pands-project/blob/master/Figure_2.jpeg)
 
+![Figure 3](https://github.com/markcot/pands-project/blob/master/Figure_3.jpeg)
+
+![Figure 4](https://github.com/markcot/pands-project/blob/master/Figure_4.jpeg)
 
 ## Research References
 
@@ -223,7 +266,6 @@ Refer to layout from website reference [ii]
 
 [9] Typical graphs produced for reviewing the Fisher Iris data set from website
     https://www.digitalvidya.com/blog/top-5-data-science-projects-for-beginners/
-
 
 ## Code reference sources:
 [A] Dr Ian McLoughlin, GMIT: H Dip in Data Analytics lecture notes,

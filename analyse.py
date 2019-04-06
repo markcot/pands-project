@@ -1,7 +1,11 @@
 # pands-project
 # GMIT project for Programming and Scripting Module 2019
 # pands project - analyse.py
-# Mark Cotter, V1_06, 2019-04-06
+# Mark Cotter, V1_07, 2019-04-06
+
+# V1_07 - 2019-04-06 (d)
+# Figure ploting made into a function
+# Print statements and comments edited 
 
 # V1_06 - 2019-04-06 (c)
 # Update to Figure sizes made
@@ -27,7 +31,8 @@
 # Import modules, import csv file and review groups
 
 # A program to read an input from a csv file of the 'Fisher’s Iris data set'
-# The program analyses the iris data set and makes a few plots.
+# The program analyses the iris data set, outputs a number of csv summary files
+# and gives the user an option to create a number of different scatter plots.
 #
 # The program takes a single additional filename from an argument on the command
 # line. Note that a single additional text filename has to be specified after the
@@ -45,14 +50,59 @@ import matplotlib.pyplot as pl
 # Code adpted from Week 9 lecture of command line arguments in python
 import sys
 
-# Datframe df is for saving the content of the csv file
+# Function for creating a scatter plot Figure
+# Take as input the a 3 dataframes names, 3 data labels strings
+# 2 column names strings and 1 figure title string.
+def plot_df_sca_comp(df1, df2, df3, lab1, lab2, lab3, col1, col2, figtitle):
+    # Temporary variables for plotting. Code adapted from
+    # https://www.datacamp.com/community/blog/python-pandas-cheat-sheet
+    # Select column for 'col1' in dataframe df1
+    a = (df1.loc[:,str(col1)])
+    # Select column for 'col2' in dataframe df1
+    b = (df1.loc[:,str(col2)])
+    # Select column for 'col1' in dataframe df2
+    c = (df2.loc[:,str(col1)])
+    # Select column for 'col2' in dataframe df2
+    d = (df2.loc[:,str(col2)])
+    # Select column for 'col1' in dataframe df3
+    e = (df3.loc[:,str(col1)])
+    # Select column for 'col2' in dataframe df3
+    f = (df3.loc[:,str(col2)])
+    # Plot the scatter plot
+    # Code adapted from https://stackoverflow.com/a/47403507 &
+    # https://stackoverflow.com/a/12608937 &
+    # https://stackoverflow.com/a/47668614
+    # Size of the Figure
+    fig = pl.figure(figsize=(7,5))
+    ax = fig.add_subplot(111)
+    # Title of the Figure
+    ax.set_title(str(figtitle))
+    # Add scatter points for variable 'a' and 'b' with label 'lab1'
+    ax.scatter(a, b, s=20, c='b', marker='o', label=str(lab1))
+    # Add scatter points for variable 'c' and 'd' with label 'lab2'
+    ax.scatter(c, d, s=20, c='r', marker='o', label=str(lab2))
+    # Add scatter points for variable 'e' and 'f' with label 'lab3'
+    ax.scatter(e, f, s=20, c='g', marker='o', label=str(lab3))
+    # Add x-axis label 'col1'
+    ax.set_xlabel(str(col1))
+    # Add x-axis label 'col2'
+    ax.set_ylabel(str(col2))
+    # Add legens labels 'lab1', 'lab2' & 'lab3'
+    ax.legend(loc='best')
+    # Plot the Figure to an image
+    pl.show()    
 
+# End of Function
+
+# Dataframe df is for saving the content of the csv file
 # Test to check if number of arguments supplied is = 2
 # Code adapted from Mark Cotter pands problem set Exercise 9 - second.py
 if len(sys.argv) != 2:
     # print error message and the program does nothing
     # Exit the program Code adapted from https://stackoverflow.com/q/17179615
-    sys.exit("Input Error: A single csv filename for input should be included.")
+    sys.exit('''\nInput Error: A single csv filename for input should be included.
+            \nEnd of program
+            ''')
 # End of test for second argument
 
 # Read the csv file at the second argument called on the command line
@@ -69,7 +119,8 @@ df.columns = ['Sepal Length', 'Sepal Width',
     'Petal Length' , 'Petal Width', 'Name']
 
 # Test print of start of the csv content
-#print(df.head())
+print('\nThe first few lines in the data set are as follows:\n',
+        df.head())
 
 # Group the data by variant name
 # Code adapted from website
@@ -79,8 +130,8 @@ grouped = df.groupby('Name')
 # Test print of the first line in each group
 # Code adapted from website
 # http://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#groupby
-#print("\nThe following is the first entry for each group in the data set:")
-#print(grouped.first())
+print("\nThe first entry for each group in the data set are as follows:")
+print(grouped.first())
 
 # Split the data into groups. Code adapted from website
 # http://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#groupby
@@ -133,10 +184,11 @@ df_ver_des = df_ver_des.round(2)
 df_vir_des = df_vir_des.round(2)
 
 # Print summaries of 3 Groups
-#print("\nSummary of the three groups is as follows.")
-#print(df_set_des)
-#print('\n', df_ver_des)
-#print('\n', df_vir_des)  
+print('\nThere are three groups in the data set',
+        '\nA summary of the three groups is as follows:')
+print('\n', df_set_des)
+print('\n', df_ver_des)
+print('\n', df_vir_des)  
 
 # Update the csv files with the correct headers
 # Code for removing index column from export adapted from
@@ -151,11 +203,13 @@ df_vir_des.to_csv('Iris-virginica_summary.csv', index = False)
 i = 1
 # Request user to enter a positive integer and assign the value to 'i'
 # Inputted value has to be an integer type value (not a float or string)
-i = (input('''\nWhat do you want to plot?
+i = (input('''\nDo you want to plot a Figure?
 0 - Exit without plotting
 1 - Sepal Length vs. Sepal Width
 2 - Petal Length vs. Petal Width
-Please enter the number of the option above: '''))
+3 - Sepal Length vs. Petal Length
+4 - Sepal Width vs. Petal Width\n
+Please enter the number of an option listed above: '''))
 
 # Try to check if inputted value for 'i' is a positive integer
 try:
@@ -163,81 +217,72 @@ try:
     i = int(i)
     # If 'i' is an non-zero positive integer
     if i >= 0:
-        # Exit
+        # Exit program
         if i == 0:
-            # Print
-            print('Exiting program')
+            # Note to user that the program is finished
+            print('\nEnd of program')
 
         # Plot Option 01
         elif i == 1:
-            # Temporary variables for plotting. Code adapted from
-            # https://www.datacamp.com/community/blog/python-pandas-cheat-sheet
-            # Select column for 'Sepal Length' in dataframe df_set
-            a = (df_set.loc[:,'Sepal Length'])
-            # Select column for 'Sepal Width' in dataframe df_set
-            b = (df_set.loc[:,'Sepal Width'])
-            # Select column for 'Sepal Length' in dataframe df_ver
-            c = (df_ver.loc[:,'Sepal Length'])
-            # Select column for 'Sepal Width' in dataframe df_ver
-            d = (df_ver.loc[:,'Sepal Width'])
-            # Select column for 'Sepal Length' in dataframe df_vir
-            e = (df_vir.loc[:,'Sepal Length'])
-            # Select column for 'Sepal Width' in dataframe df_vir
-            f = (df_vir.loc[:,'Sepal Width'])
+            # Plot function for Figure 1 - Plot of Sepal Length vs. Sepal Width
+            # Take as input the a 3 dataframes names, 3 data labels strings
+            # 2 column names strings and 1 figure title string.
+            plot_df_sca_comp(df_set, df_ver, df_vir,
+                'Setosa', 'Versicolor', 'Virginica',
+                'Sepal Length', 'Sepal Width',
+                'Figure 1 - Plot of Sepal Length vs. Sepal Width')
+            # Note to user that the program is finished
+            print('\nEnd of program')
 
-            # Plot the scatter plot
-            # Code adapted from https://stackoverflow.com/a/47403507 &
-            # https://stackoverflow.com/a/12608937 &
-            # https://stackoverflow.com/a/47668614
-            fig = pl.figure(figsize=(7,5))
-            ax = fig.add_subplot(111)
-            ax.set_title('Figure 1 - Plot of Sepal Length vs. Sepal Width')
-            ax.scatter(a, b, s=20, c='b', marker='o', label='Setosa')
-            ax.scatter(c, d, s=20, c='r', marker='o', label='Versicolor')
-            ax.scatter(e, f, s=20, c='g', marker='o', label='Virginica')
-            ax.set_xlabel('Sepal Length')
-            ax.set_ylabel('Sepal Width')
-            ax.legend(loc='best')
-            pl.show()
         # Plot Option 02
         elif i == 2:
-            # Temporary variables for plotting. Code adapted from
-            # https://www.datacamp.com/community/blog/python-pandas-cheat-sheet
-            # Select column for 'Petal Length' in dataframe df_set
-            a = (df_set.loc[:,'Petal Length'])
-            # Select column for 'Petal Width' in dataframe df_set
-            b = (df_set.loc[:,'Petal Width'])
-            # Select column for 'Petal Length' in dataframe df_ver
-            c = (df_ver.loc[:,'Petal Length'])
-            # Select column for 'Petal Width' in dataframe df_ver
-            d = (df_ver.loc[:,'Petal Width'])
-            # Select column for 'Petal Length' in dataframe df_vir
-            e = (df_vir.loc[:,'Petal Length'])
-            # Select column for 'Petal Width' in dataframe df_vir
-            f = (df_vir.loc[:,'Petal Width'])
+            # Plot function for Figure 2 - Plot of Petal Length vs. Petal Width
+            # Take as input the a 3 dataframes names, 3 data labels strings
+            # 2 column names strings and 1 figure title string.
+            plot_df_sca_comp(df_set, df_ver, df_vir,
+                'Setosa', 'Versicolor', 'Virginica',
+                'Petal Length', 'Petal Width',
+                'Figure 2 - Plot of Petal Length vs. Petal Width')
+            # Note to user that the program is finished
+            print('\nEnd of program')
 
-            # Plot the scatter plot
-            # Code adapted from https://stackoverflow.com/a/47403507 &
-            # https://stackoverflow.com/a/12608937 &
-            # https://stackoverflow.com/a/47668614
-            fig = pl.figure(figsize=(7,5))
-            ax = fig.add_subplot(111)
-            ax.set_title('Figure 2 - Plot of Petal Length vs. Petal Width')
-            ax.scatter(a, b, s=20, c='b', marker='o', label='Setosa')
-            ax.scatter(c, d, s=20, c='r', marker='o', label='Versicolor')
-            ax.scatter(e, f, s=20, c='g', marker='o', label='Virginica')
-            ax.set_xlabel('Petal Length')
-            ax.set_ylabel('Petal Width')
-            ax.legend(loc='best')
-            pl.show()
+        # Plot Option 03
+        elif i == 3:
+            # Plot function for Figure 3 - Sepal Length vs. Petal Length
+            # Take as input the a 3 dataframes names, 3 data labels strings
+            # 2 column names strings and 1 figure title string.            
+            plot_df_sca_comp(df_set, df_ver, df_vir,
+                'Setosa', 'Versicolor', 'Virginica',
+                'Sepal Length', 'Petal Length',
+                'Figure 3 - Plot of Sepal Length vs. Petal Length')
+            # Note to user that the program is finished
+            print('\nEnd of program')
+        
+        # Plot Option 04
+        elif i == 4:
+            # Plot function for Figure 4 - Sepal Width vs. Petal Width
+            # Take as input the a 3 dataframes names, 3 data labels strings
+            # 2 column names strings and 1 figure title string.  
+            plot_df_sca_comp(df_set, df_ver, df_vir,
+                'Setosa', 'Versicolor', 'Virginica',
+                'Sepal Width', 'Petal Width',
+                'Figure 4 - Plot of Sepal Width vs. Petal Width')  
+            print('\nEnd of program')
         # Prints a VALUE error message if 'i' is not an integer > 0
+        # Note to user that the program is finished
         else:
-            print("Input Error: -->", i, "<-- is not a option.")
-
+            print('\nInput Error: -->', i, '<-- is not a option listed above.\n',
+                    '\nEnd of program')
+    # Prints a VALUE error message if 'i' is not an integer > 0
+    # Note to user that the program is finished
+    else:
+        print('\nInput Error: -->', i, '<-- is not a option listed above.\n',
+                '\nEnd of program')
 # Prints a TYPE exception error if 'i' not an integer
+# Note to user that the program is finished
 except:
-    print("Input Error: -->", i, "<-- is not an integer type.")
-
+    print('\nInput Error: -->', i, '<-- is not an number type listed above.\n',
+            '\nEnd of program')
 
 # End of program
 
