@@ -24,11 +24,11 @@ the class variant name, namely:
 
 Five attributes in Fisher's Iris data set [1]
 
-    A) Sepal length in cm
-    B) Sepal width in cm 
-    B) Petal length in cm
-    D) Petal width in cm
-    E) Class variant name
+    A) Sepal Length in cm
+    B) Sepal Width in cm 
+    B) Petal Length in cm
+    D) Petal Width in cm
+    E) Class Variant Name
 
 Three Iris flower class variant names in Fisher's Iris data set [1]
 
@@ -64,6 +64,8 @@ quality and is based on real life data. The quantity of data is large enough to 
 of use, but small enough to be portable and easily experimented with. It is also
 numerical. All of which makes it an ideal data set for teaching purposes.
 
+Typical graphs produced for reviewing the Fisher Iris data [9] plot scatter plots
+and histograms of the comparing each of the four column variables.
 
 ## Investigatory python code
 
@@ -87,7 +89,7 @@ from the csv file.
 I found that this can be resolved using the 'header=None' command and add the following columns using the df.column function. I added this function in V1_02
 I adapted code from a website [D] to achieve this result.
 
-    - Sepal-length, Sepal-width, Petal-length, Petal-width, Name
+    - 'Sepal Length', 'Sepal Width', 'Petal Length', 'Petal Width', 'Name'
 
 This gave me a dataframe with 150 rows 5 columns and with a column header row
 
@@ -111,7 +113,7 @@ following:
     7) 75% - value
     8) max - maximum value
 
-## Summary of the data investigations
+## Summary of the Data Investigations
 
 ### Initial data review
 
@@ -119,15 +121,15 @@ After reading the iris dataset csv file into the python program for this project
 'analyse.py', I observed that there were three variant names included within the
 dataset 'Iris-setosa', 'Iris-versicolor' and 'Iris-virginica'.
 
-Spliting the data into three groups based on these names allowed a description summary of each group be generated. Over the fifty values in each group, when the minimum, maximum and mean values for petal length and petal width are compared, the
+Spliting the data into three groups based on these names allowed a description summary of each group be generated. Over the fifty values in each group, when the minimum, maximum and mean values for sepal length and sepal width are compared, the
 values for 'Iris-setosa' were much lower than the values for the 'Iris-versicolor'
-and 'Iris-virginica'.
+and 'Iris-virginica'. Refer to Tables 1, 2 and 3 below.
 
 This variation confirmed previous research [1] noting that the data for Iris Setosa
 is easily separable from the other two linearly, but there is some overlap between
 the other two classes making it difficult to distinguish from each other.
 
-### Summary of Initial data review
+### Summary of initial data review
 
 I decided to try and get make a table of the description data from the initial review
 In V1_03 I adapted code from a website [F] to output dataframes to a csv file and
@@ -137,8 +139,13 @@ files with the revised header rows. In V1_04, I rounded the values to 2 decimal 
 [I] and I now had clean csv file information that can be used for producing summary
 tables. Refer to Tables 1, 2 and 3 below.
 
+### Detailed Analysis of the data
 
-
+To compare the data in more detail I created some options to create plots of the data.
+I wrote code to display plots of the data to compare 'Sepal Length vs. Sepal Width'
+and 'Petal Length vs. Petal Width'. In V1_05, I used code adapted from websites ([E],
+[J], [K] & [M]) to plot scatter plot for the three groups using 3 different colours.
+Refer to Figure 1 and Figure 2 below.
 
 ## Supporting Tables and Graphics
 
@@ -172,6 +179,15 @@ Refer to layout from website reference [i]
 | min | 4.5 | 1.4 | 4.9 | 2.2 |
 | max | 6.9 | 2.5 | 7.9 | 3.8 |
 
+### Figures
+Refer to layout from website reference [i]
+
+#### Figure 1
+
+
+#### Figure 2
+
+
 
 ## Research References
 
@@ -199,6 +215,10 @@ Refer to layout from website reference [i]
 [8] Aspects that make the Iris data set a good teaching example
     https://stats.stackexchange.com/questions/74776/what-aspects-of-the-iris-data-set-make-it-so-successful-as-an-example-teaching
 
+[9] Typical graphs produced for reviewing the Fisher Iris data set from website
+    https://www.digitalvidya.com/blog/top-5-data-science-projects-for-beginners/
+
+
 ## Code reference sources:
 [A] Dr Ian McLoughlin, GMIT: H Dip in Data Analytics lecture notes,
     Code adapted from the Week 9 lecture for plotting using matplotlib and numpy
@@ -217,7 +237,7 @@ Refer to layout from website reference [i]
     pandas from website
     http://pandas.pydata.org/pandas-docs/stable/user_guide/groupby.html#groupby
 
-[F] Code for Pandas output to csv file adapted from website
+[F] Code for Pandas output to csv file and selecting columns adapted from website
     https://www.datacamp.com/community/blog/python-pandas-cheat-sheet
 
 [G] Code for removing index column from export adapted from 
@@ -228,7 +248,17 @@ Refer to layout from website reference [i]
 [I] Round summary data to 2 decimal places Code adapted from
     https://www.geeksforgeeks.org/python-pandas-dataframe-round/
 
+[J] Code adapted from Mark Cotter pands problem set Exercise 1 - sumupto.py
+    to ask user if they want plot option number they want to use.
+
+[K] Code for using code for Matplotlib scatter plot adapted from
+    https://stackoverflow.com/a/47403507
+
+[L] Code for labelling axes adapted from https://stackoverflow.com/a/12608937
+
+[M] Code for adding legend adapted from https://stackoverflow.com/a/47668614    
+
 ## Git tools reference sources:
 
-[i] Adding Tables to Git marked down file. Layout adapted from website
+[i] Adding Tables and Figure to Git marked down file. Layout adapted from website
     https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables
