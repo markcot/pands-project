@@ -1,7 +1,7 @@
 # pands-project
 ## GMIT project for Programming and Scripting Module 2019
 #### Created by: Mark Cotter, Email: g00376335@gmit.ie
-### LAST UPDATED 2019-04-06
+#### LAST UPDATED 2019-04-06
 
 ## Introduction
 This project concerns the well-known 'Fisher’s Iris data set' [1].
@@ -183,10 +183,10 @@ Refer to layout from website reference [i]
 Refer to layout from website reference [i]
 
 #### Figure 1
-
+![alt text](https://github.com/markcot/pands-project/Figure_1.jpeg "Figure 1")
 
 #### Figure 2
-
+![alt text](https://github.com/markcot/pands-project/Figure_2.jpeg "Figure 2")
 
 
 ## Research References
