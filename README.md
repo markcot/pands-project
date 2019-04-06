@@ -1,7 +1,7 @@
 # pands-project
 ## GMIT project for Programming and Scripting Module 2019
 #### Created by: Mark Cotter, Email: g00376335@gmit.ie
-### LAST UPDATED 2019-03-31
+### LAST UPDATED 2019-04-06
 
 ## Introduction
 This project concerns the well-known 'Fisher’s Iris data set' [1].
@@ -67,7 +67,7 @@ numerical. All of which makes it an ideal data set for teaching purposes.
 
 ## Investigatory python code
 
-### 2019-03-31 Initial program code
+### Initial program code
 I created a python program called 'analyse.py' version V1_01 to import and anylyse
 the Fisher's Iris data set. I added the script for the program to the folder linked
 to the git repository for this project.
@@ -78,6 +78,7 @@ for ease later use in the code [A] & [B].
 
 I used the sys argument to identify that a second additional argument after the program name was required for the csv filename [C]. I read on pandas website [B]
 about read csv files into python and decided to try it using the pd.read_csv command.
+In V1_04 I added a sys.exit() [H] if the second argument was missing.
 
 I noticed that the test print of the data only gave 149 rows and that the first row
 of the data was used for the data header so I decided to add header row to the data
@@ -129,14 +130,28 @@ the other two classes making it difficult to distinguish from each other.
 ### Summary of Initial data review
 
 I decided to try and get make a table of the description data from the initial review
-I adapted code from a website [F] to output dataframes to a csv file and exported the
-summaries to csv files. I reimported the csv files as new dataframes and added a new
-header row using code adapted from a website [G] and updated the csv files with the
-revised header rows. I now had clean csv file information that can be used for
-producing tables.
+In V1_03 I adapted code from a website [F] to output dataframes to a csv file and
+exported the summaries to csv files. I reimported the csv files as new dataframes and
+added a new header row using code adapted from a website [G] and updated the csv 
+files with the revised header rows. In V1_04, I rounded the values to 2 decimal place
+[I] and I now had clean csv file information that can be used for producing summary
+tables.
+
+
+
 
 ## Supporting tables and graphics
 
+### Summary Tables [i]
+
+#### Summary of Iris-setosa Data
+| Iris-setosa | Sepal Length | Sepal Width | Petal Length | Petal Width |
+| :---: | :---: | :---: | :---: | :---: |
+| Count | 50.0 | 50.0 | 50.0 | 50.0 |
+| Mean | 1.46 | 0.24 | 5.01 | 3.42 |
+| Std | 0.17 | 0.11 | 0.35 | 0.38 |
+| Min | 1.0 | 0.1 | 4.3 | 2.3 |
+| Max | 1.9 | 0.6 | 5.8 | 4.4 |
 
 
 
@@ -178,7 +193,7 @@ producing tables.
     and Week 9 lecture for checking for correct input arguments.
 
 [D] Code for editing header row to a pandas dataframe adapted from website
-    https://stackoverflow.com/questions/34091877/how-to-add-header-row-to-a-pandas-dataframe
+    https://stackoverflow.com/a/34094058
 
 [E] Code adapted for grouping data, getting groups and decribing groups using
     pandas from website
@@ -189,3 +204,13 @@ producing tables.
 
 [G] Code for removing index column from export adapted from 
     https://stackoverflow.com/a/25230582
+
+[H] Exit program Code adapted from https://stackoverflow.com/q/17179615
+
+[I] Round summary data to 2 decimal places Code adapted from
+    https://www.geeksforgeeks.org/python-pandas-dataframe-round/
+
+## Git tools reference sources:
+
+[i] Adding Tables to Git marked down file. Layout adapted from website
+    https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables
