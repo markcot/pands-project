@@ -135,17 +135,18 @@ exported the summaries to csv files. I reimported the csv files as new dataframe
 added a new header row using code adapted from a website [G] and updated the csv 
 files with the revised header rows. In V1_04, I rounded the values to 2 decimal place
 [I] and I now had clean csv file information that can be used for producing summary
-tables.
+tables. Refer to Tables 1, 2 and 3 below.
 
 
 
 
-## Supporting tables and graphics
+## Supporting Tables and Graphics
 
-### Summary Tables [i]
+### Summary Tables
+Refer to layout from website reference [i]
 
-#### Summary of Iris-setosa Data
-| Iris-setosa | Sepal Length | Sepal Width | Petal Length | Petal Width |
+#### Table 1 -Summary of Iris Setosa Data
+| Iris Setosa | Sepal Length | Sepal Width | Petal Length | Petal Width |
 | :---: | :---: | :---: | :---: | :---: |
 | Count | 50.0 | 50.0 | 50.0 | 50.0 |
 | Mean | 1.46 | 0.24 | 5.01 | 3.42 |
@@ -153,6 +154,23 @@ tables.
 | Min | 1.0 | 0.1 | 4.3 | 2.3 |
 | Max | 1.9 | 0.6 | 5.8 | 4.4 |
 
+#### Table 2 -Summary of Iris Versicolor Data
+| Iris Versicolor | Sepal Length | Sepal Width | Petal Length | Petal Width |
+| :---: | :---: | :---: | :---: | :---: |
+| Count | 50.0 | 50.0 | 50.0 | 50.0 |
+| mean | 4.26 | 1.33 | 5.94 | 2.77 |
+| std | 0.47 | 0.2 | 0.52 | 0.31 |
+| min | 3.0 | 1.0 | 4.9 | 2.0 |
+| max | 5.1 | 1.8 | 7.0 | 3.4 |
+
+#### Table 3 -Summary of Iris Virginica Data
+| Iris Virginica | Sepal Length | Sepal Width | Petal Length | Petal Width |
+| :---: | :---: | :---: | :---: | :---: |
+| Count | 50.0 | 50.0 | 50.0 | 50.0 |
+| mean | 5.55 | 2.03 | 6.59 | 2.97 |
+| std | 0.55 | 0.27 | 0.64 | 0.32 |
+| min | 4.5 | 1.4 | 4.9 | 2.2 |
+| max | 6.9 | 2.5 | 7.9 | 3.8 |
 
 
 ## Research References
