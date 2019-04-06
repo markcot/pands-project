@@ -66,9 +66,7 @@ numerical. All of which makes it an ideal data set for teaching purposes.
 Typical graphs produced for reviewing the Fisher Iris data [9] plot scatter plots
 and histograms of the comparing each of the four column variables.
 
-## Investigatory python code
-
-### Initial program code
+## Initial Data Investigation
 I created a python program called 'analyse.py' version V1_01 to import and analyse
 the Fisher's Iris data set. I added the script for the program to the folder linked
 to the git repository for this project.
@@ -112,50 +110,57 @@ following:
     7) 75% - value
     8) max - maximum value
 
-## Summary of the Data Investigations
-
-### Initial data review
-
+### Initial Data Review
 After reading the iris dataset csv file into the python program for this project
 'analyse.py', I observed that there were three variant names included within the
 dataset 'Iris-setosa', 'Iris-versicolor' and 'Iris-virginica'.
 
 Spliting the data into three groups based on these names allowed a description summary of each group be generated. Over the fifty values in each group, when the minimum, maximum and mean values for sepal length and sepal width are compared, the
 values for 'Iris-setosa' were much lower than the values for the 'Iris-versicolor'
-and 'Iris-virginica'. Refer to Tables 1, 2 and 3 below.
+and 'Iris-virginica'.
 
 This variation confirmed previous research [1] noting that the data for Iris Setosa
 is easily separable from the other two linearly, but there is some overlap between
 the other two classes making it difficult to distinguish from each other.
 
-### Summary of initial data review
-
-I decided to try and get make a table of the description data from the initial review
+### Conclusion of Initial Data Review
+I decided to make a table of the description data from the initial review.
 In V1_03 I adapted code from a website [F] to output dataframes to a csv file and
-exported the summaries to csv files. I reimported the csv files as new dataframes and
-added a new header row using code adapted from a website [G] and updated the csv 
-files with the revised header rows. In V1_04, I rounded the values to 2 decimal place
-[I] and I now had clean csv file information that can be used for producing summary
-tables. Refer to Tables 1, 2 and 3 below.
+exported the summaries to csv files. Refer to 'Iris-setosa_summary.csv', 
+'Iris-versicolor_summary.csv', and 'Iris-virginica_summary.csv' included in the
+github repository.
 
-### Detailed Analysis of the data
+I reimported the csv files as new dataframes and added a new header row using code
+adapted from a website [G]. The program re-exported the csv files updating the 
+existing files with the revised header rows.
 
+In V1_04, I rounded the values to 2 decimal place [I] and I now had clean csv file
+information that can be used for producing summary tables. The program re-exported
+the csv files updating the existing files with the revised header rows.
+
+Refer to Table 1, Table 2 and Table 3 below giving summaries of each of the three
+variants with instance count, mean values, standard deviation (std) values, minimum
+(min) values and maximum (max) values for each of the four characteristics in the
+data set.
+
+## Detailed Data Investigation
 To compare the data in more detail I created some options to create plots of the data.
 I wrote code to display plots of the data to compare 'Sepal Length vs. Sepal Width'
 and 'Petal Length vs. Petal Width'. In V1_05, I used code adapted from websites ([E],
 [J], [K] & [M]) to plot scatter plot for the three groups using 3 different colours.
-Refer to Figure 1 and Figure 2 below.
+Refer to Figure 1 and Figure 2 as described below.
 
 In V1_06, I edited the size of the graphs. In V1_07 I add a function
-plot_df_sca_comp() to shorten the program and reuse the ploting code and added
-Figure 3 and Figure 4 below.
+plot_df_sca_comp() to shorten the program code and reuse the ploting code within the
+function. I also added Figure 3 and Figure 4 as described below.
 
 ### Detailed Data Analysis
 
 #### Sepal Length versus Sepal Width
 Comparing 'Sepal Length' to 'Sepal Width' as shown in Figure 1, 'Iris-setosa' is
 easily distinguishable from the other two. 'Iris-virginica' and 'Iris-versicolor' have
-significant overlap making this a poor comparison method for the three iris variants.
+significant overlap making this a poor comparison method for these three iris
+variants.
 
 ####  Petal Length versus Petal Width
 When the 'Petal Length' is compared with the 'Petal Width' in Figure 2, there is a
@@ -168,32 +173,31 @@ appears to be a good differentiating method for these three iris variants.
 Figure 3 indicates the comparison of 'Sepal Length' and 'Petal Length' and has similar
 properties to Figure 2. 'Iris-setosa' is well defined as a separate entity. 
 'Iris-virginica' and 'Iris-versicolor' are separated, but with more overlap than 
-shown in Figure 2.
-This comparison method is average, but not as accurate as 'Petal Length' versus
-'Petal Width' shown in Figure 2.
+shown in Figure 2. This comparison method is average, but not as accurate as 'Petal
+Length' versus 'Petal Width' shown in Figure 2.
 
 #### Sepal Width versus Petal Width
-A comparison of 'Sepal Width' to 'Petal Width' shown in Figure 4 provides 
+A comparison of 'Sepal Width' and 'Petal Width' shown in Figure 4 provides 
 similar results as seen in Figure 2. 'Iris-setosa' is well defined as a separate
-entity. 'Iris-virginica' and 'Iris-versicolor' are separated, but have a very
-similar overlap to the overlap shown in Figure 2.
-This comparison method is just as accurate as the 'Petal Length' versus 'Petal Width'
-comparison method.
+entity. 'Iris-virginica' and 'Iris-versicolor' are separated, but have an overlap very
+similar to the overlap shown in Figure 2. This comparison method appears just as
+accurate as the 'Petal Length' versus 'Petal Width' comparison method.
 
 ### Summary of Detailed Data Analysis
-The two most accurate comparison methods for these three iris variant ('setosa',
-'virginica' and 'versicolor' are the comparison of 'Petal Length' related to 'Petal Width' and comparison of 'Sepal Width' to 'Petal Width' as shown in Figure 2 and
-Figure 4 respectively.
+The two most accurate comparison methods assessed for these three iris variant
+('setosa', 'virginica' and 'versicolor') are the comparison of 'Petal Length' related
+to 'Petal Width' and comparison of 'Sepal Width' to 'Petal Width' as shown in Figure 2 and Figure 4 respectively.
 
 'Iris-setosa' is easily separable linearly from the other two with the other two
-having some overlap. This overlap between 'Iris-virginica' and 'Iris-versicolor'
-leads to the conclusion that all of samples for these two variants were picked from
-the same pasture on the same day as identified in the previous study [6] and that
-the overlap is due to the similar growing conditions.
+having some overlap of characteristics.
+
+This overlap between 'Iris-virginica' and 'Iris-versicolor' leads to the conclusion,
+of the three variant, these two variants were more than likely the variants picked from the same pasture on the same day as identified in the previous study [6]. The overlap in characteristics between these two variants is probable due to the similar
+growing conditions and been measured by the same person with the same instrument.
 
 The known errors in the data set for sample 35 and 38 for the 'Iris-setosa' variant
-do not appear to have affected the results of the analysis. As such, these values
-were not corrected during the analysis.
+do not appear to have affected the results of the analysis undertaken. As such, these
+values were not corrected during this analysis.
 
 ## Supporting Tables and Graphics
 
