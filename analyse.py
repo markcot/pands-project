@@ -1,7 +1,10 @@
 # pands-project
 # GMIT project for Programming and Scripting Module 2019
 # pands project - analyse.py
-# Mark Cotter, V1_05, 2019-04-06
+# Mark Cotter, V1_06, 2019-04-06
+
+# V1_06 - 2019-04-06 (c)
+# Update to Figure sizes made
 
 # V1_05 - 2019-04-06 (b)
 # Header names changed
@@ -186,7 +189,7 @@ try:
             # Code adapted from https://stackoverflow.com/a/47403507 &
             # https://stackoverflow.com/a/12608937 &
             # https://stackoverflow.com/a/47668614
-            fig = pl.figure(figsize=(10,5))
+            fig = pl.figure(figsize=(7,5))
             ax = fig.add_subplot(111)
             ax.set_title('Figure 1 - Plot of Sepal Length vs. Sepal Width')
             ax.scatter(a, b, s=20, c='b', marker='o', label='Setosa')
@@ -217,7 +220,7 @@ try:
             # Code adapted from https://stackoverflow.com/a/47403507 &
             # https://stackoverflow.com/a/12608937 &
             # https://stackoverflow.com/a/47668614
-            fig = pl.figure(figsize=(10,5))
+            fig = pl.figure(figsize=(7,5))
             ax = fig.add_subplot(111)
             ax.set_title('Figure 2 - Plot of Petal Length vs. Petal Width')
             ax.scatter(a, b, s=20, c='b', marker='o', label='Setosa')

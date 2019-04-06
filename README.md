@@ -145,7 +145,15 @@ To compare the data in more detail I created some options to create plots of the
 I wrote code to display plots of the data to compare 'Sepal Length vs. Sepal Width'
 and 'Petal Length vs. Petal Width'. In V1_05, I used code adapted from websites ([E],
 [J], [K] & [M]) to plot scatter plot for the three groups using 3 different colours.
-Refer to Figure 1 and Figure 2 below.
+Refer to Figure 1 and Figure 2 below. In V1_06, I edited the size of the graphs
+
+
+### Summary of Detailed Data Analysis
+
+When the 'Petal Length' is compared with the 'Petal Width', there is a notable
+separation between all three variants with the 'Iris-virginica' to the top right of
+the plot, 'Iris-setosa' at the bottom left of the plot and 'Iris-versicolor' in the
+centre of the plot.
 
 ## Supporting Tables and Graphics
 
@@ -182,10 +190,8 @@ Refer to layout from website reference [i]
 ### Figures
 Refer to layout from website reference [ii]
 
-#### Figure 1
 ![Figure 1](https://github.com/markcot/pands-project/blob/master/Figure_1.jpeg)
 
-#### Figure 2
 ![Figure 2](https://github.com/markcot/pands-project/blob/master/Figure_2.jpeg)
 
 
