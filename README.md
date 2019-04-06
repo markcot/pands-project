@@ -180,13 +180,13 @@ Refer to layout from website reference [i]
 | max | 6.9 | 2.5 | 7.9 | 3.8 |
 
 ### Figures
-Refer to layout from website reference [i]
+Refer to layout from website reference [ii]
 
 #### Figure 1
-![Figure 1](https://github.com/markcot/pands-project/Figure_1.jpeg "Figure 1")
+![alt text](https://github.com/markcot/pands-project/Figure_1.jpeg)
 
 #### Figure 2
-![Figure 2](https://github.com/markcot/pands-project/Figure_2.jpeg "Figure 2")
+![alt text](https://github.com/markcot/pands-project/Figure_2.jpeg)
 
 
 ## Research References
@@ -262,3 +262,5 @@ Refer to layout from website reference [i]
 
 [i] Adding Tables and Figure to Git marked down file. Layout adapted from website
     https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#tables
+
+[ii] Add image to Git hub Layout adpated from https://stackoverflow.com/a/14494775
