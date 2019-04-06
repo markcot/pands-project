@@ -102,7 +102,7 @@ I undertook a few test prints of the results. I noted that there were three grou
 
 I split the data into 3 groups using the grouped.get_group() command.
 I used the pd.describe() module to get a description of the data including the
-following:
+following: 
 
     1) count
     2) mean
