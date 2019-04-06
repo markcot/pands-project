@@ -183,10 +183,11 @@ Refer to layout from website reference [i]
 Refer to layout from website reference [ii]
 
 #### Figure 1
-![Figure_1.jpeg]
+![Figure_1.jpeg](https://github.com/markcot/pands-project/Figure_1.jpeg)
 
 #### Figure 2
-![Figure_2.jpeg]
+![Figure_2.jpeg](https://github.com/markcot/pands-project/Figure_2.jpeg)
+
 
 ## Research References
 
