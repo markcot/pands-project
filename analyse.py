@@ -343,7 +343,7 @@ try:
             plot_df_sca_comp(df_set, df_ver, df_vir,
                 'Setosa', 'Versicolor', 'Virginica',
                 'R_SpL_PeW', 'R_SpW_PeL',
-                'Figure 6 - Plot of ratio Sepal Length/Petal Width vs. Sepal Length/Petal Width')  
+                'Figure 7 - Plot of ratio Sepal Length/Petal Width vs. Sepal Length/Petal Width')  
             print('\nEnd of program')
 
         # Prints a VALUE error message if 'i' is not an integer > 0
