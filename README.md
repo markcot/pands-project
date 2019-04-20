@@ -75,7 +75,7 @@ I decided to get started by importing the python modules numpy, pandas,
 matplotlib.pyplot and sys. I abbreviated the longer modules to np, pd and pl
 for ease of use in the code [A] & [B].
 
-I used the sys argument to identify that a second additional argument after the program name was required for the csv filename [C]. I read on pandas website [B]
+I used the sys argument to identify that a second additional argument after the program name was required for the csv filename [C]. I read on the pandas website [B]
 about read csv files into python and decided to try it using the pd.read_csv command.
 In V1_04 I added a sys.exit() [H] if the second argument was missing.
 
@@ -145,20 +145,20 @@ data set.
 
 ## Detailed Data Investigation
 To compare the data in more detail I created some options to create plots of the
-data. 
-I wrote code to display plots of the data to compare 'Sepal Length vs. Sepal Width'
-and 'Petal Length vs. Petal Width'. In V1_05, I used code adapted from websites
-([E], [J], [K] & [M]) to plot scatter plot for the three groups using 3 different
-colours. Refer to Figure 1 and Figure 2 as described below.
+data. I wrote code to ask the user if they wanted to display some different type of
+plots to compare 'Sepal Length vs. Sepal Width' and 'Petal Length vs. Petal Width'. In
+V1_05, I used code adapted from websites ([E], [J], [K] & [M]) to plot scatter plot for
+the three groups using 3 different colours. Refer to Figure 1 and Figure 2 as described
+below.
 
 In V1_06, I edited the size of the graphs. In V1_07 I add a function
 plot_df_sca_comp() to shorten the program code and reuse the ploting code within the
 function. I also added Figure 3 and Figure 4 as described below.
 
-In V1_07, I created additional columns in the dataframes comparing ratios of
-Sepal Length/Width versus Petal Length/Width, Sepal/Petal Length versus Sepal/Petal
-Width and Sepal Length/Petal Width versus Sepal Width/Petal Length displayed the
-results in Figures 5, 6 and 7.
+In version V1_07, using code adapted from websites ([N]), I created additional columns
+in the dataframes comparing ratios of Sepal Length/Width versus Petal Length/Width,
+Sepal/Petal Length versus Sepal/Petal Width and Sepal Length/Petal Width versus
+Sepal Width/Petal Length displayed the results in Figures 5, 6 and 7.
 
 ### Detailed Data Analysis
 
@@ -341,7 +341,11 @@ Refer to layout from website reference [ii]
 
 [L] Code for labelling axes adapted from https://stackoverflow.com/a/12608937
 
-[M] Code for adding legend adapted from https://stackoverflow.com/a/47668614    
+[M] Code for adding legend adapted from https://stackoverflow.com/a/47668614   
+
+[N] Code for adding dataframe columns adapted from websites
+    https://thispointer.com/python-pandas-how-to-add-new-columns-in-a-dataframe-using-or-dataframe-assign/
+    and https://www.interviewqs.com/ddi_code_snippets/add_new_col_df_default_value
 
 ## Git tools reference sources:
 

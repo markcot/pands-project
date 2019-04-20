@@ -200,7 +200,7 @@ df_set_des.to_csv('Iris-setosa_summary.csv', index = False)
 df_ver_des.to_csv('Iris-versicolor_summary.csv', index = False)
 df_vir_des.to_csv('Iris-virginica_summary.csv', index = False)
 
-# Add 4 new columns to the 3 grouped dataframes
+# Add 6 new columns to the 3 grouped dataframes
 # 1) Ratio of Sepal Length/Sepal Width
 # 2) Ratio of Petal Length/Petal Width
 # 3) Ratio of Sepal Length/Petal Length
@@ -406,5 +406,3 @@ except:
 # [N] Code for adding dataframe column adapted from websites
 #     https://thispointer.com/python-pandas-how-to-add-new-columns-in-a-dataframe-using-or-dataframe-assign/
 #     and https://www.interviewqs.com/ddi_code_snippets/add_new_col_df_default_value
-# [O] Code for seaborn adapted from website
-#     https://seaborn.pydata.org/examples/scatterplot_matrix.html
