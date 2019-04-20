@@ -1,7 +1,11 @@
 # pands-project
 # GMIT project for Programming and Scripting Module 2019
 # pands project - analyse.py
-# Mark Cotter, V1_07, 2019-04-06
+# Mark Cotter, V1_08, 2019-04-20
+
+# V1_08 - 2019-04-20
+# Add comparison of Ratio of Sepal Length/Sepal Width vs Petal Length/Petal Width
+# and Ratio of Sepal/Petal Length vs Sepal/Petal Width
 
 # V1_07 - 2019-04-06 (d)
 # Figure ploting made into a function
@@ -91,7 +95,6 @@ def plot_df_sca_comp(df1, df2, df3, lab1, lab2, lab3, col1, col2, figtitle):
     ax.legend(loc='best')
     # Plot the Figure to an image
     pl.show()    
-
 # End of Function
 
 # Dataframe df is for saving the content of the csv file
@@ -197,6 +200,44 @@ df_set_des.to_csv('Iris-setosa_summary.csv', index = False)
 df_ver_des.to_csv('Iris-versicolor_summary.csv', index = False)
 df_vir_des.to_csv('Iris-virginica_summary.csv', index = False)
 
+# Add 4 new columns to the 3 grouped dataframes
+# 1) Ratio of Sepal Length/Sepal Width
+# 2) Ratio of Petal Length/Petal Width
+# 3) Ratio of Sepal Length/Petal Length
+# 4) Ratio of Sepal Width/Petal Width
+# 5) Ratio of Sepal Length/Petal Width
+# 6) Ratio of Sepal Width/Petal Length
+# Code adapted from website https://thispointer.com/python-pandas-how-to-add-new-columns-in-a-dataframe-using-or-dataframe-assign/
+# and https://www.interviewqs.com/ddi_code_snippets/add_new_col_df_default_value
+# Ratios for Iris Setosa
+df_set.insert(4, 'R_SpL_SpW', df_set.loc[:,'Sepal Length'] / df_set.loc[:,'Sepal Width'])
+df_set.insert(5, 'R_PeL_PeW', df_set.loc[:,'Petal Length'] / df_set.loc[:,'Petal Width'])
+df_set.insert(6, 'R_SpL_PeL', df_set.loc[:,'Sepal Length'] / df_set.loc[:,'Petal Length'])
+df_set.insert(7, 'R_SpW_PeW', df_set.loc[:,'Sepal Width'] / df_set.loc[:,'Petal Width'])
+df_set.insert(8, 'R_SpL_PeW', df_set.loc[:,'Sepal Length'] / df_set.loc[:,'Petal Width'])
+df_set.insert(9, 'R_SpW_PeL', df_set.loc[:,'Sepal Width'] / df_set.loc[:,'Petal Length'])
+
+# Ratios for Iris Versicolor
+df_ver.insert(4, 'R_SpL_SpW', df_ver.loc[:,'Sepal Length'] / df_ver.loc[:,'Sepal Width'])
+df_ver.insert(5, 'R_PeL_PeW', df_ver.loc[:,'Petal Length'] / df_ver.loc[:,'Petal Width'])
+df_ver.insert(6, 'R_SpL_PeL', df_ver.loc[:,'Sepal Length'] / df_ver.loc[:,'Petal Length'])
+df_ver.insert(7, 'R_SpW_PeW', df_ver.loc[:,'Sepal Width'] / df_ver.loc[:,'Petal Width'])
+df_ver.insert(8, 'R_SpL_PeW', df_ver.loc[:,'Sepal Length'] / df_ver.loc[:,'Petal Width'])
+df_ver.insert(9, 'R_SpW_PeL', df_ver.loc[:,'Sepal Width'] / df_ver.loc[:,'Petal Length'])
+
+# Ratios for Iris Virginica
+df_vir.insert(4, 'R_SpL_SpW', df_vir.loc[:,'Sepal Length'] / df_vir.loc[:,'Sepal Width'])
+df_vir.insert(5, 'R_PeL_PeW', df_vir.loc[:,'Petal Length'] / df_vir.loc[:,'Petal Width'])
+df_vir.insert(6, 'R_SpL_PeL', df_vir.loc[:,'Sepal Length'] / df_vir.loc[:,'Petal Length'])
+df_vir.insert(7, 'R_SpW_PeW', df_vir.loc[:,'Sepal Width'] / df_vir.loc[:,'Petal Width'])
+df_vir.insert(8, 'R_SpL_PeW', df_vir.loc[:,'Sepal Length'] / df_vir.loc[:,'Petal Width'])
+df_vir.insert(9, 'R_SpW_PeL', df_vir.loc[:,'Sepal Width'] / df_vir.loc[:,'Petal Length'])
+
+# Test print of dataframe contents
+#print('\n', df_set)
+#print('\n', df_ver)
+#print('\n', df_vir)
+
 # Ask user if they want plot option number they want to use Code adapted
 # from Mark Cotter Exercise 1 - sumupto.py
 # Set initial state for variable 'i'
@@ -208,7 +249,10 @@ i = (input('''\nDo you want to plot a Figure?
 1 - Sepal Length vs. Sepal Width
 2 - Petal Length vs. Petal Width
 3 - Sepal Length vs. Petal Length
-4 - Sepal Width vs. Petal Width\n
+4 - Sepal Width vs. Petal Width
+5 - Ratio Sepal Length/Width vs. Petal Length/Width
+6 - Ratio Sepal Length/Petal Length vs. Sepal Width/Petal Width
+7 - Ratio Sepal Length/Petal Width vs. Sepal Width/Petal Length\n
 Please enter the number of an option listed above: '''))
 
 # Try to check if inputted value for 'i' is a positive integer
@@ -225,7 +269,7 @@ try:
         # Plot Option 01
         elif i == 1:
             # Plot function for Figure 1 - Plot of Sepal Length vs. Sepal Width
-            # Take as input the a 3 dataframes names, 3 data labels strings
+            # Take as input 3 dataframes names, 3 data labels strings
             # 2 column names strings and 1 figure title string.
             plot_df_sca_comp(df_set, df_ver, df_vir,
                 'Setosa', 'Versicolor', 'Virginica',
@@ -237,7 +281,7 @@ try:
         # Plot Option 02
         elif i == 2:
             # Plot function for Figure 2 - Plot of Petal Length vs. Petal Width
-            # Take as input the a 3 dataframes names, 3 data labels strings
+            # Take as input 3 dataframes names, 3 data labels strings
             # 2 column names strings and 1 figure title string.
             plot_df_sca_comp(df_set, df_ver, df_vir,
                 'Setosa', 'Versicolor', 'Virginica',
@@ -249,7 +293,7 @@ try:
         # Plot Option 03
         elif i == 3:
             # Plot function for Figure 3 - Sepal Length vs. Petal Length
-            # Take as input the a 3 dataframes names, 3 data labels strings
+            # Take as input 3 dataframes names, 3 data labels strings
             # 2 column names strings and 1 figure title string.            
             plot_df_sca_comp(df_set, df_ver, df_vir,
                 'Setosa', 'Versicolor', 'Virginica',
@@ -261,13 +305,47 @@ try:
         # Plot Option 04
         elif i == 4:
             # Plot function for Figure 4 - Sepal Width vs. Petal Width
-            # Take as input the a 3 dataframes names, 3 data labels strings
+            # Take as input 3 dataframes names, 3 data labels strings
             # 2 column names strings and 1 figure title string.  
             plot_df_sca_comp(df_set, df_ver, df_vir,
                 'Setosa', 'Versicolor', 'Virginica',
                 'Sepal Width', 'Petal Width',
                 'Figure 4 - Plot of Sepal Width vs. Petal Width')  
             print('\nEnd of program')
+
+        # Plot Option 05
+        elif i == 5:
+            # Plot function for Figure 5 - Ratio of Sepal Length/Width vs. Petal Length/Width
+            # Take as input 3 dataframes names, 3 data labels strings
+            # 2 column names strings and 1 figure title string.  
+            plot_df_sca_comp(df_set, df_ver, df_vir,
+                'Setosa', 'Versicolor', 'Virginica',
+                'R_SpL_SpW', 'R_PeL_PeW',
+                'Figure 5 - Plot of ratio Sepal Length/Width vs. Petal Length/Width')  
+            print('\nEnd of program')
+
+        # Plot Option 06
+        elif i == 6:
+            # Plot function for Figure 6 - Ratio Sepal/Petal Length vs. Sepal/Petal Width
+            # Take as input 3 dataframes names, 3 data labels strings
+            # 2 column names strings and 1 figure title string.  
+            plot_df_sca_comp(df_set, df_ver, df_vir,
+                'Setosa', 'Versicolor', 'Virginica',
+                'R_SpL_PeL', 'R_SpW_PeW',
+                'Figure 6 - Plot of ratio Sepal/Petal Length vs. Sepal/Petal Width')  
+            print('\nEnd of program')
+
+        # Plot Option 07
+        elif i == 7:
+            # Plot function for Figure 7 - Ratio Sepal Length/Petal Width vs. Sepal Length/Petal Width
+            # Take as input 3 dataframes names, 3 data labels strings
+            # 2 column names strings and 1 figure title string.  
+            plot_df_sca_comp(df_set, df_ver, df_vir,
+                'Setosa', 'Versicolor', 'Virginica',
+                'R_SpL_PeW', 'R_SpW_PeL',
+                'Figure 6 - Plot of ratio Sepal Length/Petal Width vs. Sepal Length/Petal Width')  
+            print('\nEnd of program')
+
         # Prints a VALUE error message if 'i' is not an integer > 0
         # Note to user that the program is finished
         else:
@@ -324,3 +402,9 @@ except:
 # [L] Code for labelling axes adapted from https://stackoverflow.com/a/12608937
 #
 # [M] Code for adding legend adapted from https://stackoverflow.com/a/47668614
+#
+# [N] Code for adding dataframe column adapted from websites
+#     https://thispointer.com/python-pandas-how-to-add-new-columns-in-a-dataframe-using-or-dataframe-assign/
+#     and https://www.interviewqs.com/ddi_code_snippets/add_new_col_df_default_value
+# [O] Code for seaborn adapted from website
+#     https://seaborn.pydata.org/examples/scatterplot_matrix.html

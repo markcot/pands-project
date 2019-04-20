@@ -1,7 +1,7 @@
 # pands-project
 ## GMIT project for Programming and Scripting Module 2019
 #### Created by: Mark Cotter, Email: g00376335@gmit.ie
-#### LAST UPDATED 2019-04-06
+#### LAST UPDATED 2019-04-20
 
 ## Introduction
 This project concerns the well-known 'Fisher’s Iris data set' [1].
@@ -144,15 +144,21 @@ variants with instance count, mean values, standard deviation (std) values, mini
 data set.
 
 ## Detailed Data Investigation
-To compare the data in more detail I created some options to create plots of the data.
+To compare the data in more detail I created some options to create plots of the
+data. 
 I wrote code to display plots of the data to compare 'Sepal Length vs. Sepal Width'
-and 'Petal Length vs. Petal Width'. In V1_05, I used code adapted from websites ([E],
-[J], [K] & [M]) to plot scatter plot for the three groups using 3 different colours.
-Refer to Figure 1 and Figure 2 as described below.
+and 'Petal Length vs. Petal Width'. In V1_05, I used code adapted from websites
+([E], [J], [K] & [M]) to plot scatter plot for the three groups using 3 different
+colours. Refer to Figure 1 and Figure 2 as described below.
 
 In V1_06, I edited the size of the graphs. In V1_07 I add a function
 plot_df_sca_comp() to shorten the program code and reuse the ploting code within the
 function. I also added Figure 3 and Figure 4 as described below.
+
+In V1_07, I created additional columns in the dataframes comparing ratios of
+Sepal Length/Width versus Petal Length/Width, Sepal/Petal Length versus Sepal/Petal
+Width and Sepal Length/Petal Width versus Sepal Width/Petal Length displayed the
+results in Figures 5, 6 and 7.
 
 ### Detailed Data Analysis
 
@@ -183,10 +189,32 @@ entity. 'Iris-virginica' and 'Iris-versicolor' are separated, but have an overla
 similar to the overlap shown in Figure 2. This comparison method appears just as
 accurate as the 'Petal Length' versus 'Petal Width' comparison method.
 
+#### Ratio of Sepal Length/Sepal Width versus Ratio of Petal Length/Petal Width
+The division of the Sepal Length by Sepal Width is compared to the division of
+Petal Length by Petal Width is shown in Figure 5. Except for a single
+entry (Sample 40) 'Iris-setosa' is well defined as a separate entity, but
+'Iris-virginica' and 'Iris-versicolor' are mixed together. This comparison is
+inconclusive.
+
+#### Ratio of Sepal Length/Sepal Width versus Ratio of Petal Length/Petal Width
+The division of the Sepal Length by Petal Length is compared to the division of
+Sepal Width by Petal Width is shown in Figure 6. 'Iris-setosa' is well defined as a
+separate entity, but 'Iris-virginica' and 'Iris-versicolor' are close with some
+overlap. 'Iris-virginica' display is concentrated at the lower left of the plot and 'Iris-versicolor' displayed close, but slightly above and to the right. This comparison
+is inconclusive.
+
+#### Ratio of Sepal Length/Petal Width versus Ratio of Sepal Width/Petal Length
+The division of the Sepal Length by Petal Width is compared to the division of
+Sepal Width by Petal Length is shown in Figure 7. Similar to Figure 6 'Iris-setosa' is
+well defined as a separate entity, but 'Iris-virginica' and 'Iris-versicolor' are close
+with some overlap. 'Iris-virginica' display is concentrated at the lower left of the plot and 'Iris-versicolor' displayed close, but slightly above and to the right. This
+comparison is inconclusive.
+
 ### Summary of Detailed Data Analysis
 The two most accurate comparison methods assessed for these three iris variant
-('setosa', 'virginica' and 'versicolor') are the comparison of 'Petal Length' related
-to 'Petal Width' and comparison of 'Sepal Width' to 'Petal Width' as shown in Figure 2 and Figure 4 respectively.
+('setosa', 'virginica' and 'versicolor') are the comparison of 'Petal Length'
+related to 'Petal Width' and comparison of 'Sepal Width' to 'Petal Width' as shown
+in Figure 2 and Figure 4 respectively.
 
 'Iris-setosa' is easily separable linearly from the other two with the other two
 having some overlap of characteristics.
@@ -196,8 +224,7 @@ of the three variant, these two variants were more than likely the variants pick
 growing conditions and been measured by the same person with the same instrument.
 
 The known errors in the data set for sample 35 and 38 for the 'Iris-setosa' variant
-do not appear to have affected the results of the analysis undertaken. As such, these
-values were not corrected during this analysis.
+do not appear to have affected the results of the analysis undertaken. As such, these values were not corrected during this analysis.
 
 ## Supporting Tables and Graphics
 
@@ -241,6 +268,12 @@ Refer to layout from website reference [ii]
 ![Figure 3](https://github.com/markcot/pands-project/blob/master/Figure_3.jpeg)
 
 ![Figure 4](https://github.com/markcot/pands-project/blob/master/Figure_4.jpeg)
+
+![Figure 5](https://github.com/markcot/pands-project/blob/master/Figure_5.jpeg)
+
+![Figure 6](https://github.com/markcot/pands-project/blob/master/Figure_6.jpeg)
+
+![Figure 7](https://github.com/markcot/pands-project/blob/master/Figure_7.jpeg)
 
 ## Research References
 
