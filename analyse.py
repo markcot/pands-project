@@ -1,15 +1,23 @@
 # pands-project
 # GMIT project for Programming and Scripting Module 2019
 # pands project - analyse.py
-# Mark Cotter, V1_08, 2019-04-20
+# Mark Cotter, V1_09, 2019-04-30
+
+# V1_09 - 2019-04-29
+# Add seaborn histogram plots to compare various dataframe parameters and function
+# created to display the seaborn histograms.
+# Figures 8 to 11 added.
+# Comments updated
 
 # V1_08 - 2019-04-20
 # Add comparison of Ratio of Sepal Length/Sepal Width vs Petal Length/Petal Width
-# and Ratio of Sepal/Petal Length vs Sepal/Petal Width
+# and Ratio of Sepal/Petal Length vs Sepal/Petal Width.
+# Figures 5 to 7 added.
 
 # V1_07 - 2019-04-06 (d)
-# Figure ploting made into a function
+# Figure plotting made into a function
 # Print statements and comments edited 
+# Figures 3 and 4 added.
 
 # V1_06 - 2019-04-06 (c)
 # Update to Figure sizes made
@@ -34,13 +42,17 @@
 # V1_01 - Program created 2019-03-31 (a)
 # Import modules, import csv file and review groups
 
+
+###############################################################################
+
+
 # A program to read an input from a csv file of the 'Fisher’s Iris data set'
 # The program analyses the iris data set, outputs a number of csv summary files
 # and gives the user an option to create a number of different scatter plots.
 #
 # The program takes a single additional filename from an argument on the command
 # line. Note that a single additional text filename has to be specified after the
-# program # name. e.g. >>python analyse.py iris-data-set.csv
+# program name. e.g. >>python analyse.py iris-data-set.csv
 # The program prints an error if no additional filename is provided
 # The program prints an error if two or more additional filenames are provided 
 
@@ -53,6 +65,16 @@ import matplotlib.pyplot as pl
 # Opens the python sys module
 # Code adpted from Week 9 lecture of command line arguments in python
 import sys
+# Import seborn module abbreviated to sns. Code adpated from
+# http://cmdlinetips.com/2019/02/how-to-make-histogram-in-python-with-pandas-and-seaborn/
+import seaborn as sns
+# Remove seaborn warnings code verbatim from https://stackoverflow.com/a/54856457
+import warnings
+warnings.filterwarnings("ignore")
+
+
+###############################################################################
+
 
 # Function for creating a scatter plot Figure
 # Take as input the a 3 dataframes names, 3 data labels strings
@@ -75,7 +97,8 @@ def plot_df_sca_comp(df1, df2, df3, lab1, lab2, lab3, col1, col2, figtitle):
     # Plot the scatter plot
     # Code adapted from https://stackoverflow.com/a/47403507 &
     # https://stackoverflow.com/a/12608937 &
-    # https://stackoverflow.com/a/47668614
+    # https://stackoverflow.com/a/47668614 &
+    # https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_Matplotlib_Cheat_Sheet.pdf
     # Size of the Figure
     fig = pl.figure(figsize=(7,5))
     ax = fig.add_subplot(111)
@@ -89,13 +112,45 @@ def plot_df_sca_comp(df1, df2, df3, lab1, lab2, lab3, col1, col2, figtitle):
     ax.scatter(e, f, s=20, c='g', marker='o', label=str(lab3))
     # Add x-axis label 'col1'
     ax.set_xlabel(str(col1))
-    # Add x-axis label 'col2'
+    # Add y-axis label 'col2'
     ax.set_ylabel(str(col2))
-    # Add legens labels 'lab1', 'lab2' & 'lab3'
+    # Add legend labels 'lab1', 'lab2' & 'lab3'
     ax.legend(loc='best')
     # Plot the Figure to an image
     pl.show()    
 # End of Function
+
+
+###############################################################################
+
+
+# Function for creating overlapping Histogram plots
+# Take as input the a 3 dataframes names, 3 data labels strings
+# 1 column names string and 1 figure title string.
+def plot_df_hist_comp(df1, df2, df3, lab1, lab2, lab3, col1, figtitle):
+    # http://cmdlinetips.com/2019/02/how-to-make-histogram-in-python-with-pandas-and-seaborn/
+    # Plot histogram of the three variants
+    # Select column for 'col1' in dataframe df1
+    sns.distplot(df1[str(col1)], color='b', kde=False, label=str(lab1))
+    # Select column for 'col1' in dataframe df2
+    sns.distplot(df2[str(col1)], color='r', kde=False, label=str(lab2))
+    # Select column for 'col1' in dataframe df3
+    sns.distplot(df3[str(col1)], color='g', kde=False, label=str(lab3))
+    # Figure Legend
+    pl.legend(prop={'size': 12})
+    # Title of the Figure
+    pl.title(str(figtitle))
+    # Add x-axis label 'col1'
+    pl.xlabel(str(col1))
+    # Add y-axis label
+    pl.ylabel('Frequency')
+    # Display the plot
+    pl.show()
+# End of Function
+
+
+###############################################################################
+
 
 # Dataframe df is for saving the content of the csv file
 # Test to check if number of arguments supplied is = 2
@@ -104,9 +159,13 @@ if len(sys.argv) != 2:
     # print error message and the program does nothing
     # Exit the program Code adapted from https://stackoverflow.com/q/17179615
     sys.exit('''\nInput Error: A single csv filename for input should be included.
-            \nEnd of program
+            \nEnd of program\n\n\n\n
             ''')
 # End of test for second argument
+
+
+###############################################################################
+
 
 # Read the csv file at the second argument called on the command line
 # The formated code with {} refers to the second argument of the python
@@ -124,6 +183,10 @@ df.columns = ['Sepal Length', 'Sepal Width',
 # Test print of start of the csv content
 print('\nThe first few lines in the data set are as follows:\n',
         df.head())
+
+
+###############################################################################
+
 
 # Group the data by variant name
 # Code adapted from website
@@ -200,6 +263,10 @@ df_set_des.to_csv('Iris-setosa_summary.csv', index = False)
 df_ver_des.to_csv('Iris-versicolor_summary.csv', index = False)
 df_vir_des.to_csv('Iris-virginica_summary.csv', index = False)
 
+
+###############################################################################
+
+
 # Add 6 new columns to the 3 grouped dataframes
 # 1) Ratio of Sepal Length/Sepal Width
 # 2) Ratio of Petal Length/Petal Width
@@ -238,6 +305,10 @@ df_vir.insert(9, 'R_SpW_PeL', df_vir.loc[:,'Sepal Width'] / df_vir.loc[:,'Petal 
 #print('\n', df_ver)
 #print('\n', df_vir)
 
+
+###############################################################################
+
+
 # Ask user if they want plot option number they want to use Code adapted
 # from Mark Cotter Exercise 1 - sumupto.py
 # Set initial state for variable 'i'
@@ -245,14 +316,18 @@ i = 1
 # Request user to enter a positive integer and assign the value to 'i'
 # Inputted value has to be an integer type value (not a float or string)
 i = (input('''\nDo you want to plot a Figure?
-0 - Exit without plotting
-1 - Sepal Length vs. Sepal Width
-2 - Petal Length vs. Petal Width
-3 - Sepal Length vs. Petal Length
-4 - Sepal Width vs. Petal Width
-5 - Ratio Sepal Length/Width vs. Petal Length/Width
-6 - Ratio Sepal Length/Petal Length vs. Sepal Width/Petal Width
-7 - Ratio Sepal Length/Petal Width vs. Sepal Width/Petal Length\n
+00 - Exit without plotting
+01 - Sepal Length vs. Sepal Width
+02 - Petal Length vs. Petal Width
+03 - Sepal Length vs. Petal Length
+04 - Sepal Width vs. Petal Width
+05 - Ratio Sepal Length/Width vs. Petal Length/Width
+06 - Ratio Sepal Length/Petal Length vs. Sepal Width/Petal Width
+07 - Ratio Sepal Length/Petal Width vs. Sepal Width/Petal Length
+08 - Sepal Length Frequency
+09 - Sepal Width Frequency
+10 - Petal Length Frequency
+11 - Petal Width Frequency\n
 Please enter the number of an option listed above: '''))
 
 # Try to check if inputted value for 'i' is a positive integer
@@ -264,7 +339,7 @@ try:
         # Exit program
         if i == 0:
             # Note to user that the program is finished
-            print('\nEnd of program')
+            print('\nEnd of program\n\n\n\n')
 
         # Plot Option 01
         elif i == 1:
@@ -276,7 +351,7 @@ try:
                 'Sepal Length', 'Sepal Width',
                 'Figure 1 - Plot of Sepal Length vs. Sepal Width')
             # Note to user that the program is finished
-            print('\nEnd of program')
+            print('\nEnd of program\n\n\n\n')
 
         # Plot Option 02
         elif i == 2:
@@ -288,7 +363,7 @@ try:
                 'Petal Length', 'Petal Width',
                 'Figure 2 - Plot of Petal Length vs. Petal Width')
             # Note to user that the program is finished
-            print('\nEnd of program')
+            print('\nEnd of program\n\n\n\n')
 
         # Plot Option 03
         elif i == 3:
@@ -300,7 +375,7 @@ try:
                 'Sepal Length', 'Petal Length',
                 'Figure 3 - Plot of Sepal Length vs. Petal Length')
             # Note to user that the program is finished
-            print('\nEnd of program')
+            print('\nEnd of program\n\n\n\n')
         
         # Plot Option 04
         elif i == 4:
@@ -311,7 +386,7 @@ try:
                 'Setosa', 'Versicolor', 'Virginica',
                 'Sepal Width', 'Petal Width',
                 'Figure 4 - Plot of Sepal Width vs. Petal Width')  
-            print('\nEnd of program')
+            print('\nEnd of program\n\n\n\n')
 
         # Plot Option 05
         elif i == 5:
@@ -322,7 +397,7 @@ try:
                 'Setosa', 'Versicolor', 'Virginica',
                 'R_SpL_SpW', 'R_PeL_PeW',
                 'Figure 5 - Plot of ratio Sepal Length/Width vs. Petal Length/Width')  
-            print('\nEnd of program')
+            print('\nEnd of program\n\n\n\n')
 
         # Plot Option 06
         elif i == 6:
@@ -333,36 +408,90 @@ try:
                 'Setosa', 'Versicolor', 'Virginica',
                 'R_SpL_PeL', 'R_SpW_PeW',
                 'Figure 6 - Plot of ratio Sepal/Petal Length vs. Sepal/Petal Width')  
-            print('\nEnd of program')
+            print('\nEnd of program\n\n\n\n')
 
         # Plot Option 07
         elif i == 7:
-            # Plot function for Figure 7 - Ratio Sepal Length/Petal Width vs. Sepal Length/Petal Width
+            # Plot function for Figure 7 - Ratio Sepal Length/Petal Width vs.
+            #                              Sepal Length/Petal Width
             # Take as input 3 dataframes names, 3 data labels strings
             # 2 column names strings and 1 figure title string.  
             plot_df_sca_comp(df_set, df_ver, df_vir,
                 'Setosa', 'Versicolor', 'Virginica',
                 'R_SpL_PeW', 'R_SpW_PeL',
                 'Figure 7 - Plot of ratio Sepal Length/Petal Width vs. Sepal Length/Petal Width')  
-            print('\nEnd of program')
+            print('\nEnd of program\n\n\n\n')
 
-        # Prints a VALUE error message if 'i' is not an integer > 0
-        # Note to user that the program is finished
+        # Plot Option 08
+        elif i == 8:
+            # Plot function for Figure 8 - Plot of Sepal Length Frequency
+            # Take as input 3 dataframes names, 3 data labels strings
+            # 1 column name string and 1 figure title string.  
+            plot_df_hist_comp(df_set, df_ver, df_vir,
+                'Setosa', 'Versicolor', 'Virginica',
+                'Sepal Length',
+                'Figure 8 - Plot of Sepal Length Frequency')
+            # Note to user that the program is finished
+            print('\nEnd of program\n\n\n\n')
+
+        # Plot Option 09
+        elif i == 9:
+            # Plot function for Figure 9 - Plot of Sepal Width Frequency
+            # Take as input 3 dataframes names, 3 data labels strings
+            # 1 column name string and 1 figure title string.  
+            plot_df_hist_comp(df_set, df_ver, df_vir,
+                'Setosa', 'Versicolor', 'Virginica',
+                'Sepal Width',
+                'Figure 9 - Plot of Sepal Width Frequency')
+            # Note to user that the program is finished
+            print('\nEnd of program\n\n\n\n')
+
+        # Plot Option 10
+        elif i == 10:
+            # Plot function for Figure 10 - Plot of Petal Length Frequency
+            # Take as input 3 dataframes names, 3 data labels strings
+            # 1 column name string and 1 figure title string.  
+            plot_df_hist_comp(df_set, df_ver, df_vir,
+                'Setosa', 'Versicolor', 'Virginica',
+                'Petal Length',
+                'Figure 10 - Plot of Petal Length Frequency')
+            # Note to user that the program is finished
+            print('\nEnd of program\n\n\n\n')
+
+        # Plot Option 11
+        elif i == 11:
+            # Plot function for Figure 11 - Plot of Petal Width Frequency
+            # Take as input 3 dataframes names, 3 data labels strings
+            # 1 column name string and 1 figure title string.  
+            plot_df_hist_comp(df_set, df_ver, df_vir,
+                'Setosa', 'Versicolor', 'Virginica',
+                'Petal Width',
+                'Figure 11 - Plot of Petal Width Frequency')
+            # Note to user that the program is finished
+            print('\nEnd of program\n\n\n\n')
+
+        # Prints a VALUE error message if 'i' is not an integer > numbers in
+        # list above.
         else:
+            # Note to user that the program is finished
             print('\nInput Error: -->', i, '<-- is not a option listed above.\n',
-                    '\nEnd of program')
+                    '\nEnd of program\n\n\n\n')
+
     # Prints a VALUE error message if 'i' is not an integer > 0
     # Note to user that the program is finished
     else:
         print('\nInput Error: -->', i, '<-- is not a option listed above.\n',
-                '\nEnd of program')
+                '\nEnd of program\n\n\n\n')
 # Prints a TYPE exception error if 'i' not an integer
 # Note to user that the program is finished
 except:
     print('\nInput Error: -->', i, '<-- is not an number type listed above.\n',
-            '\nEnd of program')
-
+            '\nEnd of program\n\n\n\n')
 # End of program
+
+
+###############################################################################
+
 
 # Code reference sources:
 # [A] Dr Ian McLoughlin, GMIT: H Dip in Data Analytics lecture notes,
@@ -406,3 +535,11 @@ except:
 # [N] Code for adding dataframe column adapted from websites
 #     https://thispointer.com/python-pandas-how-to-add-new-columns-in-a-dataframe-using-or-dataframe-assign/
 #     and https://www.interviewqs.com/ddi_code_snippets/add_new_col_df_default_value
+#
+# [O] Code for plotting scatterplots using matplotlib adapted from
+#     https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_Matplotlib_Cheat_Sheet.pdf
+#
+# [P] Code for plotting Histograms using seaborn adapted from
+#     http://cmdlinetips.com/2019/02/how-to-make-histogram-in-python-with-pandas-and-seaborn/
+#
+# [Q] Code for removing seaborn warnings verbatim from https://stackoverflow.com/a/54856457

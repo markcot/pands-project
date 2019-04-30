@@ -1,7 +1,7 @@
 # pands-project
 ## GMIT project for Programming and Scripting Module 2019
 #### Created by: Mark Cotter, Email: g00376335@gmit.ie
-#### LAST UPDATED 2019-04-20
+#### LAST UPDATED 2019-04-30
 
 ## Introduction
 This project concerns the well-known 'Fisher’s Iris data set' [1].
@@ -9,9 +9,20 @@ The project entails researching the data set, writing documentation and
 code in the Python programming language [2] based on that research.
 
 The data set has been widely investigated and written about it, much of which has
-published online in the field of pattern recognition and machine learning.
+published online in the field of pattern recognition and machine learning. The data set
+file 'iris-data-set.csv' is used in this project.
 
-## Research
+The python code for this project is called 'analyse.py'. The code take a second input
+argument on the command line. To run the code in the current working folder for this project,
+enter on the command line the following text to run the code:
+
+#### python analyse.py iris-data-set.csv
+
+The code displays to the screen a number of summaries of the data set contents, outputs the
+summaries to additional csv files and gives the user a number of options for plotting some
+Figures.
+
+## Data set Research
 The data set [1] was introduced in a paper by botanist Ronald A. Fisher in 1936, but
 was originally collected in 1935 and published in 1936 by botanist Edgar S. Anderson
 [3]. The data set is also referred to as 'Anderson's Iris data set'.
@@ -75,27 +86,30 @@ I decided to get started by importing the python modules numpy, pandas,
 matplotlib.pyplot and sys. I abbreviated the longer modules to np, pd and pl
 for ease of use in the code [A] & [B].
 
-I used the sys argument to identify that a second additional argument after the program name was required for the csv filename [C]. I read on the pandas website [B]
-about read csv files into python and decided to try it using the pd.read_csv command.
-In V1_04 I added a sys.exit() [H] if the second argument was missing.
+As used in one of my previous coding projects [C], I used the sys argument to highlight to
+the user that a second additional argument after the program name was required for the csv
+filename [C]. I learned how to read csv files into python on the pandas website [B] and
+decided to try it using the pd.read_csv command.
+In V1_04 I added a sys.exit() [H] command if the second argument was missing. This allows me
+to avoid using a very long if statement or loop checking for the correct input argument.
 
 I noticed that the test print of the data only gave 149 rows and that the first row
 of the data was used for the data header so I decided to add header row to the data
-from the csv file.
-
-I found that this can be resolved using the 'header=None' command and add the following columns using the df.column function. I added this function in V1_02
+from the csv file. I identified that this can be resolved using the 'header=None' command
+and add the following columns using the df.column function. I added this function in V1_02
 I adapted code from a website [D] to achieve this result.
 
     - Sepal Length, Sepal Width, Petal Length, Petal Width, Name
 
-This gave me a dataframe with 150 rows 5 columns and with a column header row
+This gave me a dataframe with 150 rows 5 columns and with a column header row.
 
-I adapted code for pd.groupby(), grouped.get_group() and pd.describe() modules
-from a website [E].
+Investigating the python pandas module online [E], I learned how to adapt code to
+filter and summarize the data using pd.groupby(), grouped.first(), grouped.get_group() and
+pd.describe() functions.
 
-To investigate what content was included in the data I used the pd.groupby() function
-to group the data by the variant Name.
-I undertook a few test prints of the results. I noted that there were three groups 'Iris-setosa', 'Iris-versicolor' and 'Iris-virginica' included in the dataset.
+Using the pd.groupby() function, I grouped the content of the data I used the by the variant
+Name. Using a few test prints grouped.first() function indicated that there were three
+groups 'Iris-setosa', 'Iris-versicolor' and 'Iris-virginica' included in the data set.
 
 I split the data into 3 groups using the grouped.get_group() command.
 I used the pd.describe() module to get a description of the data including the
@@ -111,11 +125,13 @@ following:
     8) max - maximum value
 
 ### Initial Data Review
-After reading the iris dataset csv file into the python program for this project
+After reading in the iris data set csv file into the python program for this project
 'analyse.py', I observed that there were three variant names included within the
-dataset 'Iris-setosa', 'Iris-versicolor' and 'Iris-virginica'.
+data set 'Iris-setosa', 'Iris-versicolor' and 'Iris-virginica'.
 
-Spliting the data into three groups based on these names allowed a description summary of each group be generated. Over the fifty values in each group, when the minimum, maximum and mean values for sepal length and sepal width are compared, the
+Splitting the data into three groups based on these names allowed a description summary of
+each group be generated. Over the fifty values in each group, when the minimum, maximum and
+mean values for sepal length and sepal width are compared, the
 values for 'Iris-setosa' were much lower than the values for the 'Iris-versicolor'
 and 'Iris-virginica'.
 
@@ -130,7 +146,7 @@ exported the summaries to csv files. Refer to 'Iris-setosa_summary.csv',
 'Iris-versicolor_summary.csv', and 'Iris-virginica_summary.csv' included in the
 github repository.
 
-I reimported the csv files as new dataframes and added a new header row using code
+I reimported the csv files as new dataframes and added new header rows using code
 adapted from a website [G]. The program re-exported the csv files updating the 
 existing files with the revised header rows.
 
@@ -138,27 +154,44 @@ In V1_04, I rounded the values to 2 decimal place [I] and I now had clean csv fi
 information that can be used for producing summary tables. The program re-exported
 the csv files updating the existing files with the revised header rows.
 
-Refer to Table 1, Table 2 and Table 3 below giving summaries of each of the three
-variants with instance count, mean values, standard deviation (std) values, minimum
-(min) values and maximum (max) values for each of the four characteristics in the
-data set.
+This initial data review gave me a good understanding of how to use dataframes and use python
+to manipulate data outputs and inputs on a iterative basis in order to achieve the desired
+output. I also learned how to display tables in the marked down file [i].
+
+Using data from the summary csv files I generated Table 1, Table 2 and Table 3 below. These
+tables include summaries of each of the three variants with instance count, mean values,
+standard deviation (std) values, minimum (min) values and maximum (max) values for each of
+the four characteristics in the data set. 
 
 ## Detailed Data Investigation
-To compare the data in more detail I created some options to create plots of the
+To compare the data in more detail, I created some options to create plots of the
 data. I wrote code to ask the user if they wanted to display some different type of
 plots to compare 'Sepal Length vs. Sepal Width' and 'Petal Length vs. Petal Width'. In
 V1_05, I used code adapted from websites ([E], [J], [K] & [M]) to plot scatter plot for
 the three groups using 3 different colours. Refer to Figure 1 and Figure 2 as described
-below.
+below. This was my first experience in using scatter plots and I found that they give a
+good impression of the data.
 
 In V1_06, I edited the size of the graphs. In V1_07 I add a function
-plot_df_sca_comp() to shorten the program code and reuse the ploting code within the
-function. I also added Figure 3 and Figure 4 as described below.
+plot_df_sca_comp() to shorten the program code and reuse the plotting code within the
+function. I also added Figure 3 and Figure 4 as described below. I found that once the
+function was written, it really helped to speed up writing code for additional scatter plots.
 
-In version V1_07, using code adapted from websites ([N]), I created additional columns
+In V1_08, using code adapted from websites ([N]), I created additional columns
 in the dataframes comparing ratios of Sepal Length/Width versus Petal Length/Width,
 Sepal/Petal Length versus Sepal/Petal Width and Sepal Length/Petal Width versus
-Sepal Width/Petal Length displayed the results in Figures 5, 6 and 7.
+Sepal Width/Petal Length. The results are displayed in Figures 5, 6 and 7.
+
+In V1_09, using code adapted from websites ([O] & [P]), I created overlapping histogram plots
+to compare the frequency of each parameter in the data set. The results are displayed in
+Figures 8, 9, 10 and 11. I found that importing the seaborn module slows down he running
+of the program noticeable. Seborn can generate a deprecated warnings when using the distplot
+function. Insofar as the histograms plotted correctly, I was able to turn off this warning
+using code from website reference [Q]. In future I may limit use of importing the seaborn
+module, as it appears to slow the run time of the program.
+
+An example of a typical 'analyse.py' code run is indicated in Figure 12 and an example of the
+input error code run is indicated in Figure 13.
 
 ### Detailed Data Analysis
 
@@ -170,7 +203,8 @@ variants.
 
 ####  Petal Length versus Petal Width
 When the 'Petal Length' is compared with the 'Petal Width' in Figure 2, there is a
-notable separation between all three variants. 'Iris-setosa' is at the bottom left of the plot, 'Iris-virginica' is at the top right of the plot and 'Iris-versicolor' is
+notable separation between all three variants. 'Iris-setosa' is at the bottom left of the
+plot, 'Iris-virginica' is at the top right of the plot and 'Iris-versicolor' is
 in the centre of the plot. There is some minor overlap between the 'Iris-virginica'
 data and the 'Iris-versicolor' data. However 'Petal Length' related to 'Petal Width'
 appears to be a good differentiating method for these three iris variants.
@@ -200,31 +234,49 @@ inconclusive.
 The division of the Sepal Length by Petal Length is compared to the division of
 Sepal Width by Petal Width is shown in Figure 6. 'Iris-setosa' is well defined as a
 separate entity, but 'Iris-virginica' and 'Iris-versicolor' are close with some
-overlap. 'Iris-virginica' display is concentrated at the lower left of the plot and 'Iris-versicolor' displayed close, but slightly above and to the right. This comparison
+overlap. 'Iris-virginica' display is concentrated at the lower left of the plot and
+'Iris-versicolor' displayed close, but slightly above and to the right. This comparison
 is inconclusive.
 
 #### Ratio of Sepal Length/Petal Width versus Ratio of Sepal Width/Petal Length
 The division of the Sepal Length by Petal Width is compared to the division of
 Sepal Width by Petal Length is shown in Figure 7. Similar to Figure 6 'Iris-setosa' is
 well defined as a separate entity, but 'Iris-virginica' and 'Iris-versicolor' are close
-with some overlap. 'Iris-virginica' display is concentrated at the lower left of the plot and 'Iris-versicolor' displayed close, but slightly above and to the right. This
+with some overlap. 'Iris-virginica' display is concentrated at the lower left of the plot
+and 'Iris-versicolor' displayed close, but slightly above and to the right. This
 comparison is inconclusive.
 
+#### Frequency of Sepal Length and Sepal Width
+Overlapping histograms of the various frequencies of Sepal Length and Sepal Width are
+indicated in Figure 8 and Figure 9. The frequencies of each variant for these parameters
+form identifiable zones, but there is some overlap of all three variants. These
+comparisons are inconclusive.
+
+#### Frequency of Petal Length and Petal Width
+Various frequencies of Petal Length and Petal Width are compared using overlaid histograms 
+in Figure 10 and Figure 11. The frequencies of each variant for these parameters
+form identifiable zones. 'Iris-setosa' is well defined as a separate entity, with
+'Iris-virginica' and 'Iris-versicolor' adjacent to each other with minor overlap. These
+comparisons appears to be a good defining factor in separating the three variants.
+
 ### Summary of Detailed Data Analysis
-The two most accurate comparison methods assessed for these three iris variant
-('setosa', 'virginica' and 'versicolor') are the comparison of 'Petal Length'
-related to 'Petal Width' and comparison of 'Sepal Width' to 'Petal Width' as shown
-in Figure 2 and Figure 4 respectively.
+The most accurate comparison methods identified for assessing for these three iris variants
+('setosa', 'virginica' and 'versicolor') are the 'Petal Length', 'Petal Width', how
+'Petal Length' relates to 'Petal Width' and how 'Sepal Width' relates to 'Petal Width' as
+shown in Figure 10, Figure 11, Figure 2 and Figure 4 respectively.
 
 'Iris-setosa' is easily separable linearly from the other two with the other two
 having some overlap of characteristics.
 
 This overlap between 'Iris-virginica' and 'Iris-versicolor' leads to the conclusion,
-of the three variant, these two variants were more than likely the variants picked from the same pasture on the same day as identified in the previous study [6]. The overlap in characteristics between these two variants is probable due to the similar
+of the three variants, these two variants were more than likely, the variants picked from the
+same pasture on the same day as identified in the previous study [6]. The overlap in
+characteristics between these two variants is probable due to the similar
 growing conditions and been measured by the same person with the same instrument.
 
 The known errors in the data set for sample 35 and 38 for the 'Iris-setosa' variant
-do not appear to have affected the results of the analysis undertaken. As such, these values were not corrected during this analysis.
+do not appear to have affected the results of the analysis undertaken. As such, these values
+were not corrected during this analysis.
 
 ## Supporting Tables and Graphics
 
@@ -274,6 +326,18 @@ Refer to layout from website reference [ii]
 ![Figure 6](https://github.com/markcot/pands-project/blob/master/Figure_6.jpeg)
 
 ![Figure 7](https://github.com/markcot/pands-project/blob/master/Figure_7.jpeg)
+
+![Figure 8](https://github.com/markcot/pands-project/blob/master/Figure_8.jpeg)
+
+![Figure 9](https://github.com/markcot/pands-project/blob/master/Figure_9.jpeg)
+
+![Figure 10](https://github.com/markcot/pands-project/blob/master/Figure_10.jpeg)
+
+![Figure 11](https://github.com/markcot/pands-project/blob/master/Figure_11.jpeg)
+
+![Figure 12](https://github.com/markcot/pands-project/blob/master/Figure_12.jpeg)
+
+![Figure 13](https://github.com/markcot/pands-project/blob/master/Figure_13.jpeg)
 
 ## Research References
 
@@ -346,6 +410,14 @@ Refer to layout from website reference [ii]
 [N] Code for adding dataframe columns adapted from websites
     https://thispointer.com/python-pandas-how-to-add-new-columns-in-a-dataframe-using-or-dataframe-assign/
     and https://www.interviewqs.com/ddi_code_snippets/add_new_col_df_default_value
+
+[O] Code for plotting scatterplots using matplotlib adapted from
+    https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Python_Matplotlib_Cheat_Sheet.pdf
+
+[P] Code for plotting Histograms using seaborn adapted from
+    http://cmdlinetips.com/2019/02/how-to-make-histogram-in-python-with-pandas-and-seaborn/
+
+[Q] Code for removing seaborn warnings verbatim from https://stackoverflow.com/a/54856457
 
 ## Git tools reference sources:
 
